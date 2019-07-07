@@ -12,7 +12,7 @@
     <category citation-format="note"/>
     <category field="law"/>
     <published>2019-07-07T15:58:00+01:00</published>
-    <updated>2019-07-07T15:58:00+01:00</updated>
+    <updated>2019-07-07T21:32:00+01:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="de-AT">
@@ -121,11 +121,11 @@
         </if>
 
         <else-if type="legal_case">
-          <text variable="authority" suffix=" "/>
           <choose>
             <if variable="genre number" match="all">
 <!-- EuGH EuG EuGöD EGMR Entscheidungen -->
 <!-- Das genre Feld wird verwendet um diese Entscheidungen zu markieren-->
+              <text variable="authority" suffix=" "/>
               <date variable="issued" suffix=" ">
                 <date-part name="day" suffix=". "/>
                 <date-part name="month" form="numeric" suffix=". "/>
@@ -142,6 +142,7 @@
             </if>
             <else-if variable="number container-title volume" match="all">
 <!-- Österreichische Entscheidung mit Fundstelle -->
+              <text variable="authority" suffix=" "/>
               <choose>
                 <if variable="title">
                   <text variable="number" suffix=", "/>
@@ -164,6 +165,7 @@
             </else-if>
             <else-if variable="issued number" match="all">
 <!-- Österreichische Entsheidung ohne Fundstelle -->
+              <text variable="authority" suffix=" "/>
               <date variable="issued" suffix=" ">
                 <date-part name="day" suffix=". "/>
                 <date-part name="month" form="numeric" suffix=". "/>
@@ -173,6 +175,7 @@
             </else-if>
             <else>
 <!-- Rechtssätze -->
+              <text variable="authority" suffix=" "/>
               <text variable="title"/>
               <text variable="note" prefix=", "/>
             </else>
@@ -222,7 +225,7 @@
               <choose>
                 <if position="first">
 <!-- Erstmalige Zitierung -->
-                  <text variable="title" prefix=", " suffix=" in "/>
+                  <text variable="title" prefix=", " suffix=", in "/>
                   <text macro="editors" suffix=" (Hrsg), "/>
                   <text variable="container-title" suffix=" "/>
                   <date variable="issued" suffix=", ">
@@ -261,9 +264,13 @@
               <text variable="container-title" prefix=", "/>
               <text variable="volume" prefix=" "/>
               <text variable="edition" vertical-align="sup"/>
-              <date variable="issued" prefix=" ">
-                <date-part name="year" form="long" prefix=" (" suffix=")"/>
-              </date>
+              <choose>
+                <if position="first">
+                  <date variable="issued" prefix=" ">
+                    <date-part name="year" form="long" prefix=" (" suffix=")"/>
+                  </date>
+                </if>
+              </choose>
               <text variable="locator" prefix=" "/>
             </else>
           </choose>
@@ -361,11 +368,11 @@
         </if>
 
         <else-if type="legal_case">
-          <text variable="authority" suffix=" "/>
           <choose>
             <if variable="genre number" match="all">
 <!-- EuGH EuG EuGöD EGMR Entscheidungen -->
 <!-- Das genre Feld wird verwendet um diese Entscheidungen zu markieren-->
+              <text variable="authority" suffix=" "/>
               <date variable="issued" suffix=" ">
                 <date-part name="day" suffix=". "/>
                 <date-part name="month" form="numeric" suffix=". "/>
@@ -382,6 +389,7 @@
             </if>
             <else-if variable="number container-title volume" match="all">
 <!-- Österreichische Entscheidung mit Fundstelle -->
+              <text variable="authority" suffix=" "/>
               <choose>
                 <if variable="title">
                   <text variable="number" suffix=", "/>
@@ -404,6 +412,7 @@
             </else-if>
             <else-if variable="issued number" match="all">
 <!-- Österreichische Entsheidung ohne Fundstelle -->
+              <text variable="authority" suffix=" "/>
               <date variable="issued" suffix=" ">
                 <date-part name="day" suffix=". "/>
                 <date-part name="month" form="numeric" suffix=". "/>
@@ -411,11 +420,7 @@
               </date>
               <text variable="number"/>
             </else-if>
-            <else>
-<!-- Rechtssätze -->
-              <text variable="title"/>
-              <text variable="note" prefix=", "/>
-            </else>
+<!-- Keine Rechtssätze in der Bibliographie-->
           </choose>
         </else-if>
 
@@ -440,7 +445,7 @@
             <if variable="title">
 <!-- Tagungs- und sonstige Sammelbände, Fest- und Gedächtnisschriften -->
               <text macro="authors" />
-              <text variable="title" prefix=", " suffix=" in "/>
+              <text variable="title" prefix=", " suffix=", in "/>
               <text macro="editors" suffix=" (Hrsg), "/>
               <text variable="container-title" suffix=" "/>
               <date variable="issued" suffix=", ">
