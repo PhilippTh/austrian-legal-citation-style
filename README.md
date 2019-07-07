@@ -148,3 +148,9 @@ Dabei werden für alle diese Werke folgende Informationen wiedergegeben:
 - container-title: Ein Medium in dem das Werk veröffentlicht wurde.
 - issued: Das Veröffentlichungsdatum.
 - locator: Eine Seite oder Randzahl auf die besonders hingewiesen werden soll.
+
+## Nicht umsetzbare Regeln
+Folgende Regeln können in CSL nicht umgesetzt werden und müssen daher nach Generierung manuell geändert werden.
+- Nach der Zitierung einer Entscheidung wird bei allen Entscheidungen in der selben Fußnote, die von derselben Behörde entschieden werden, jede weitere Nennung der Behörde unterlassen.
+- Wenn Entscheidungen über mehrere Fundstellen verfügen, wird jede weitere Fundstelle nach einem "=" angefügt.
+- Nach dem Titel eines Beitrags wird dann ein "," gesetzt, wenn der Titel nicht mit einem Satzzeichen endet.
