@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="note" default-locale="de-AT">
   <info>
-    <title>Abkürzungs- und Zitierregeln der österreichischen Rechtssprache und europarechtlicher Rechtsquellen</title>
+    <title>AZR - Abkürzungs- und Zitierregeln der österreichischen Rechtssprache und europarechtlicher Rechtsquellen</title>
     <title-short>AZR</title-short>
-    <id>http://www.zotero.org/styles/abkurzungs-und-zitierregeln-der-osterreichischen-rechtssprache-und-europarechtlicher-rechtsquellen</id>
-    <link href="http://www.zotero.org/styles/abkurzungs-und-zitierregeln-der-osterreichischen-rechtssprache-und-europarechtlicher-rechtsquellen" rel="self"/>
+    <id>http://www.zotero.org/styles/azr-abkurzungs-und-zitierregeln-der-osterreichischen-rechtssprache-und-europarechtlicher-rechtsquellen</id>
+    <link href="http://www.zotero.org/styles/azr-abkurzungs-und-zitierregeln-der-osterreichischen-rechtssprache-und-europarechtlicher-rechtsquellen" rel="self"/>
     <link href="https://github.com/PhilippTh/austrian-legal-citation-style/blob/master/README.md" rel="documentation"/>
     <link href="https://www.manz.at/autoren/autorenservice/azr.html" rel="documentation"/>
     <author>
