@@ -13,7 +13,7 @@
     </author>
     <category citation-format="note"/>
     <category field="law"/>
-    <updated>2019-09-24T15:37:33+02:00</updated>
+    <updated>2019-09-24T16:08:52+02:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="de-AT">
@@ -299,7 +299,7 @@
                     <!-- Wenn container-title-short existiert, dann wird angenommen,
                       dass es sich um ein Fest- oder Gedenkschrift handelt. -->
                     <if variable="container-title-short">
-                      <text variable="container-title" suffix=" "/>
+                      <text variable="container-title-short" suffix=" "/>
                     </if>
                     <else>
                       <text macro="editors" suffix=" "/>
@@ -518,8 +518,15 @@
               <!-- Tagungs- und sonstige Sammelbände, Fest- und Gedächtnisschriften -->
               <text macro="authors"/>
               <text variable="title" prefix=", " suffix=", in "/>
-              <text macro="editors" suffix=" (Hrsg), "/>
-              <text variable="container-title" suffix=" "/>
+              <choose>
+                <if variable="container-title-short">
+                  <text variable="container-title-short" suffix=" "/>
+                </if>
+                <else>
+                  <text macro="editors" suffix=" (Hrsg), "/>
+                  <text variable="container-title" suffix=" "/>
+                </else>
+              </choose>
               <date variable="issued" suffix=", ">
                 <date-part name="year" form="long" prefix="(" suffix=")"/>
               </date>
