@@ -13,7 +13,7 @@
     </author>
     <category citation-format="note"/>
     <category field="law"/>
-    <updated>2019-09-24T13:51:57+02:00</updated>
+    <updated>2019-09-24T15:37:33+02:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="de-AT">
@@ -37,8 +37,11 @@
   <macro name="sort-key">
     <choose>
       <if type="bill" match="any">
-        <text value="3"/>
+        <text value="4"/>
       </if>
+      <else-if type="legislation" match="any">
+        <text value="3"/>
+      </else-if>
       <else-if type="legal_case" match="any">
         <text value="2"/>
       </else-if>
@@ -82,6 +85,20 @@
     </group>
     <text variable="edition" vertical-align="sup"/>
   </macro>
+  <macro name="legislation-container-year-number">
+    <group delimiter=" ">
+      <text variable="container-title"/>
+      <group delimiter=", ">
+        <group delimiter="/">
+          <date variable="issued">
+            <date-part name="year" form="long"/>
+          </date>
+          <text variable="volume"/>
+        </group>
+        <text variable="page-first"/>
+      </group>
+    </group>
+  </macro>
   <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" givenname-disambiguation-rule="all-names-with-initials" disambiguate-add-givenname="true">
     <layout suffix="." delimiter="; ">
       <choose>
@@ -121,6 +138,41 @@
             </else>
           </choose>
         </if>
+        <else-if type="legislation">
+          <group delimiter=" ">
+            <text variable="locator"/>
+            <choose>
+              <if variable="genre" match="all">
+                <!-- Verordnung oder Richtlinie der Europäischen Union -->
+                <!-- Das genre Feld wird verwendet um europäische Normen zu markieren-->
+                <choose>
+                  <if position="first">
+                    <group delimiter=", ">
+                      <text variable="title"/>
+                      <text macro="legislation-container-year-number"/>
+                    </group>
+                  </if>
+                  <else>
+                    <text variable="title" form="short"/>
+                    <text macro="legislation-container-year-number"/>
+                  </else>
+                </choose>
+              </if>
+              <else>
+                <!-- Österreichische Normen -->
+                <choose>
+                  <if position="first">
+                    <text variable="title"/>
+                    <text macro="legislation-container-year-number"/>
+                  </if>
+                  <else>
+                    <text variable="title" form="short"/>
+                  </else>
+                </choose>
+              </else>
+            </choose>
+          </group>
+        </else-if>
         <else-if type="legal_case">
           <choose>
             <if variable="genre number" match="all">
@@ -370,6 +422,25 @@
             </else>
           </choose>
         </if>
+        <else-if type="legislation">
+          <choose>
+            <if variable="genre" match="all">
+              <!-- Verordnung oder Richtlinie der Europäischen Union -->
+              <!-- Das genre Feld wird verwendet um europäische Normen zu markieren-->
+              <group delimiter=", ">
+                <text variable="title"/>
+                <text macro="legislation-container-year-number"/>
+              </group>
+            </if>
+            <else>
+              <!-- Österreichische Normen -->
+              <group delimiter=" ">
+                <text variable="title"/>
+                <text macro="legislation-container-year-number"/>
+              </group>
+            </else>
+          </choose>
+        </else-if>
         <else-if type="legal_case">
           <choose>
             <if variable="genre number" match="all">
