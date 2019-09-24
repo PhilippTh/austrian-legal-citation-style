@@ -72,6 +72,16 @@
     <text variable="note" suffix=" "/>
     <text macro="authors"/>
   </macro>
+  <macro name="ed-container-title-volume-edition">
+    <group delimiter=" ">
+      <group delimiter=", ">
+        <text macro="editors"/>
+        <text variable="container-title"/>
+      </group>
+      <text variable="volume"/>
+    </group>
+    <text variable="edition" vertical-align="sup"/>
+  </macro>
   <citation et-al-min="4" et-al-use-first="1" disambiguate-add-names="true" givenname-disambiguation-rule="all-names-with-initials" disambiguate-add-givenname="true">
     <layout suffix="." delimiter="; ">
       <choose>
@@ -256,23 +266,23 @@
             </if>
             <else>
               <!-- Kommentare -->
-              <text macro="authors" suffix=" in "/>
-              <text macro="editors"/>
-              <text variable="container-title" prefix=", "/>
-              <text variable="volume" prefix=" "/>
-              <text variable="edition" vertical-align="sup"/>
-              <choose>
-                <if position="first">
-                  <date variable="issued" prefix=" ">
-                    <date-part name="year" form="long" prefix=" (" suffix=")"/>
-                  </date>
-                  <text variable="title" prefix=" "/>
-                </if>
-                <else>
-                  <text variable="title" form="short"/>
-                </else>
-              </choose>
-              <text variable="locator" prefix=" "/>
+              <group delimiter=" ">
+                <text macro="authors"/>
+                <text term="in"/>
+                <text macro="ed-container-title-volume-edition"/>
+                <choose>
+                  <if position="first">
+                    <date variable="issued">
+                      <date-part name="year" form="long" prefix="(" suffix=")"/>
+                    </date>
+                    <text variable="title"/>
+                  </if>
+                  <else>
+                    <text variable="title" form="short"/>
+                  </else>
+                </choose>
+                <text variable="locator"/>
+              </group>
             </else>
           </choose>
         </else-if>
