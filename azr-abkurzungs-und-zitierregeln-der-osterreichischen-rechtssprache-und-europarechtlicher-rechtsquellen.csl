@@ -13,7 +13,7 @@
     </author>
     <category citation-format="note"/>
     <category field="law"/>
-    <updated>2019-09-24T11:21:38+02:00</updated>
+    <updated>2019-09-24T13:16:35+02:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="de-AT">
@@ -208,7 +208,7 @@
         </else-if>
         <else-if type="paper-conference chapter" match="any">
           <choose>
-            <if variable="title">
+            <if variable="page">
               <!-- Tagungs- und sonstige Sammelbände, Fest- und Gedächtnisschriften -->
               <text macro="authors"/>
               <choose>
@@ -258,7 +258,11 @@
                   <date variable="issued" prefix=" ">
                     <date-part name="year" form="long" prefix=" (" suffix=")"/>
                   </date>
+                  <text variable="title" prefix=" "/>
                 </if>
+                <else>
+                  <text variable="title" form="short"/>
+                </else>
               </choose>
               <text variable="locator" prefix=" "/>
             </else>
