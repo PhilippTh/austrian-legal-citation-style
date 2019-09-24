@@ -13,7 +13,7 @@
     </author>
     <category citation-format="note"/>
     <category field="law"/>
-    <updated>2019-09-24T13:16:35+02:00</updated>
+    <updated>2019-09-24T13:28:44+02:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="de-AT">
@@ -215,8 +215,15 @@
                 <if position="first">
                   <!-- Erstmalige Zitierung -->
                   <text variable="title" prefix=", " suffix=", in "/>
-                  <text macro="editors" suffix=" (Hrsg), "/>
-                  <text variable="container-title" suffix=" "/>
+                  <choose>
+                    <if variable="container-title-short">
+                      <text variable="container-title-short" suffix=" "/>
+                    </if>
+                    <else>
+                      <text macro="editors" suffix=" (Hrsg), "/>
+                      <text variable="container-title" suffix=" "/>
+                    </else>
+                  </choose>
                   <date variable="issued" suffix=", ">
                     <date-part name="year" form="long" prefix="(" suffix=")"/>
                   </date>
@@ -227,12 +234,13 @@
                   <!-- Nachfolgende Zitierung -->
                   <text value=" in "/>
                   <choose>
-                    <!-- Wenn kein Herausgeber gefunden wird, dann wird angenommen, dass es sich um ein Fest- oder Gedenkschrift handelt. -->
-                    <if variable="editor">
-                      <text macro="editors" suffix=" "/>
+                    <!-- Wenn container-title-short existiert, dann wird angenommen,
+                      dass es sich um ein Fest- oder Gedenkschrift handelt. -->
+                    <if variable="container-title-short">
+                      <text variable="container-title" suffix=" "/>
                     </if>
                     <else>
-                      <text variable="container-title" suffix=" "/>
+                      <text macro="editors" suffix=" "/>
                     </else>
                   </choose>
                   <choose>
