@@ -1,5 +1,13 @@
 # Abkrzüngs- und Zitierregeln (AZR)
 
+Dieses Repository enthält Umsetzungen des Zitierstils AZR(Abkürzungs- und Zitierregeln) 8. Auflage in citation style language (CSL) und biblatex.
+
+## Biblatex
+
+Der Zitierstil konnte in biblatex noch nicht fertig umgesetzt werden. Contributions sind erwünscht.
+
+## CSL
+
 Eine Umsetzung der AZR in citation style language (CSL). Diese Umsetzung erlaubt es Bibliographieprogrammen wie Zotero oder Mendeley automatisch AZR konforme Zitate zu erstellen. Im Folgenden werden auch Beispiele präsentiert, die auf Basis eines Bibtext files der in diesem repository gefunden werden kann mit dieser Umsetzung generiert wurden.
 
 Folgende Kategorien werden verwendet:
@@ -149,7 +157,7 @@ Dabei werden für alle diese Werke folgende Informationen wiedergegeben:
 - issued: Das Veröffentlichungsdatum.
 - locator: Eine Seite oder Randzahl auf die besonders hingewiesen werden soll.
 
-## Nicht umsetzbare Regeln
+### Nicht umsetzbare Regeln
 Folgende Regeln können in CSL nicht umgesetzt werden und müssen daher nach Generierung manuell geändert werden.
 - Nach der Zitierung einer Entscheidung wird bei allen Entscheidungen in der selben Fußnote, die von derselben Behörde entschieden werden, jede weitere Nennung der Behörde unterlassen.
 - Wenn Entscheidungen über mehrere Fundstellen verfügen, wird jede weitere Fundstelle nach einem "=" angefügt.
