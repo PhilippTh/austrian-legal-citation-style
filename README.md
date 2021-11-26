@@ -12,9 +12,9 @@ Eine Umsetzung der AZR in citation style language (CSL). Diese Umsetzung erlaubt
 
 Folgende Kategorien werden verwendet:
 
-### bill
-Die Kategorie "bill" umfasst österreichische und europäische Rechtsnormen. Um den unterschiedlichen Zitierweisen Rechnung zu tragen, wird das Feld "Genre" zur Unterscheidung verwendet. Solange das Feld "Genre" einen Wert enthält wird angenommen, dass es sich um eine europäische Richtlinie oder Verordnung handelt und die Zitierweise entsprechend angepasst.
-Diese Umsetzung von AZR gibt für "bill" folgende Informationen wieder:
+### bill - legislation
+Die Kategorien "bill" oder "legislation" umfassen österreichische und europäische Rechtsnormen. Um den unterschiedlichen Zitierweisen Rechnung zu tragen, wird das Feld "Genre" zur Unterscheidung verwendet. Solange das Feld "Genre" einen Wert enthält wird angenommen, dass es sich um eine europäische Richtlinie oder Verordnung handelt und die Zitierweise entsprechend angepasst.
+Diese Umsetzung von AZR gibt für "bill" oder "legislation" folgende Informationen wieder:
 - title oder short_title: Der Titel der Rechtsnorm beziehungsweise der Kurztitel bei nachfolgenden Zitaten.
 - container-title: Die Bezeichnung des Publikationsorgans.
 - volume: Der Jahrgang des Publikationsorgans.
