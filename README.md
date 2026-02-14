@@ -23,10 +23,20 @@ Diese Umsetzung von AZR gibt für "bill" oder "legislation" folgende Information
 - genre: Der Wert in genre wird nie verwendet. Wenn ein Wert angegeben ist, wird angenommen, dass es sich um Richtlinien oder Verordnungen der Europäischen Union handelt.
 
 Beispiel für österreichische Rechtsnormen:
-![Recht-Österreich](Beispiele/Recht-Österreich.jpg?raw=true "Recht-Österreich")
+
+| | |
+|---|---|
+| **Individual Citations** | Einführungserlass zur SMG-Novelle 2007. |
+| **Single Citation (with position "first")** | Einführungserlass zur SMG-Novelle 2007 JABl 2008/9. |
+| **Bibliography** | Einführungserlass zur SMG-Novelle 2007 JABl 2008/9 |
 
 Beispiel für Richtlinien oder Verordnungen der Europäischen Union:
-![Recht-EU](Beispiele/Recht-EU.jpg?raw=true "Recht-EU")
+
+| | |
+|---|---|
+| **Individual Citations** | AufnahmeRL 2003/9 ABl I 2003/31, 18. |
+| **Single Citation (with position "first")** | RL 2003/9/EG des Rates vom 27. 1. 2003 zur Festlegung von Mindestnormen für die Aufnahme von Asylwerbern in den Mitgliedstaaten, ABl I 2003/31, 18. |
+| **Bibliography** | RL 2003/9/EG des Rates vom 27. 1. 2003 zur Festlegung von Mindestnormen für die Aufnahme von Asylwerbern in den Mitgliedstaaten, ABl I 2003/31, 18 |
 
 ### legasl_case
 Die Kategorie "legal-case" umfasst Entscheidungen österreichischer Gerichte, des EuG, EuGH, EuGöD oder EGMR, sowie Rechtssätze. Wie bei "bill" wird auch hier das Feld "Genre" zur Unterscheidung von inländischen und "europäischen" Entscheidungen verwendet. Solange das Feld "Genre" einen Wert enthält, wird angenommen, dass es sich um eine "europäische" Entscheidung handelt.
@@ -46,16 +56,36 @@ Diese Umsetzung von AZR gibt für "legal_case" folgende Informationen wieder:
 Für Rechtssätze wird RIS-Justiz als authority verwendet, als title die Nummer des Rechtssatzes beginnend mit "RS" und gegebenenfalls im Feld "note" Hinweise auf die letzte Zitierung.
 
 Beispiel für Entscheidungen österreichischer Gerichte:
-![Entscheidung-OGH](Beispiele/Entscheidung-OGH.jpg?raw=true "Entscheidung-OGH")
+
+| | |
+|---|---|
+| **Individual Citations** | OGH 4 Ob 105/11m, *123people.at*, ÖBl 2012/45 175 (zust *Büchele*). |
+| **Single Citation (with position "first")** | OGH 4 Ob 105/11m, *123people.at*, ÖBl 2012/45 175 (zust *Büchele*). |
+| **Bibliography** | OGH 4 Ob 105/11m, *123people.at*, ÖBl 2012/45 175 (zust *Büchele*) |
 
 Beispiel für Entscheidungen EuG, EuGH, EuGöD:
-![Entscheidung-EuGH](Beispiele/Entscheidung-EuGH.jpg?raw=true "Entscheidung-EuGH")
+
+| | |
+|---|---|
+| **Individual Citations** | EuGH 9. 11. 2010 , C-296/10, *Purrucker/Valles Perez* EF-Z 2011. |
+| **Single Citation (with position "first")** | EuGH 9. 11. 2010 , C-296/10, *Purrucker/Valles Perez* EF-Z 2011. |
+| **Bibliography** | EuGH 9. 11. 2010 , C-296/10, *Purrucker/Valles Perez* EF-Z 2011 |
 
 Beispiel für Entscheidungen EGMR:
-![Entscheidung-EGMR](Beispiele/Entscheidung-EGMR.jpg?raw=true "Entscheidung-EGMR")
+
+| | |
+|---|---|
+| **Individual Citations** | EGMR 26. 10. 2000 (GK), 30210/96, *Kudla* EGMR 2000–XI. |
+| **Single Citation (with position "first")** | EGMR 26. 10. 2000 (GK), 30210/96, *Kudla* EGMR 2000–XI. |
+| **Bibliography** | EGMR 26. 10. 2000 (GK), 30210/96, *Kudla* EGMR 2000–XI |
 
 Beispiel für Rechtssätze:
-![Rechtssatz](Beispiele/Rechtssatz.jpg?raw=true "Rechtssatz")
+
+| | |
+|---|---|
+| **Individual Citations** | RIS-Justiz RS0061119, zuletzt OGH 14 Os 108/08a EvBl 2008/174. |
+| **Single Citation (with position "first")** | RIS-Justiz RS0061119, zuletzt OGH 14 Os 108/08a EvBl 2008/174. |
+| **Bibliography** | |
 
 ### article-journal
 Die Kategorie "article-journal" umfasst Aufsätze in juristischen Zeitschriften.
@@ -69,7 +99,12 @@ Diese Umsetzung von AZR gibt für "article-journal" folgende Informationen wiede
 - locator: Eine Seite auf die hingewiesen werden soll.
 
 Beispiel für Aufsätze in Zeitschriften:
-![Aufsatz](Beispiele/Aufsatz.jpg?raw=true "Aufsatz")
+
+| | |
+|---|---|
+| **Individual Citations** | *Zankl*, ecolex 2019, 244. |
+| **Single Citation (with position "first")** | *Zankl*, Künstliche Intelligenz und Immaterialgüterrecht bei Computerkunst, ecolex 2019, 244. |
+| **Bibliography** | *Zankl*, Künstliche Intelligenz und Immaterialgüterrecht bei Computerkunst, ecolex 2019, 244 |
 
 ### paper-conference
 Die Kategorie "paper-conference" umfasst Beiträge in Tagungsbänden. Die dazugehörigen Tagungsbände werden in der Kategorie "book" erfasst.
@@ -83,7 +118,12 @@ Diese Umsetzung von AZR gibt für "paper-conference" folgende Informationen wied
 - locator: Eine Seite des Beitrags auf die hingewiesen werden soll.
 
 Beispiel für Beiträge in Tagungsbänden:
-![Tagungsbeitrag](Beispiele/Tagungsbeitrag.jpg?raw=true "Tagungsbeitrag")
+
+| | |
+|---|---|
+| **Individual Citations** | *Havur et al* in Internet of Things: Tagungsband des 22. Internationalen Rechtsinformatik Symposions IRIS 2019 Proceedings of the 22nd International Legal Infomatics Symposium IRIS 2019 4. |
+| **Single Citation (with position "first")** | *Havur et al*, DALICC: A Framework for Publishing and Consuming Data Assets Legally, in Internet of Things: Tagungsband des 22. Internationalen Rechtsinformatik Symposions IRIS 2019 Proceedings of the 22nd International Legal Infomatics Symposium IRIS 2019 (2019), 4. |
+| **Bibliography** | *Havur/Steyskal/Panasiuk/Fensel/Mireles/Pellegrini/Thurner/Polleres/Kirrane*, DALICC: A Framework for Publishing and Consuming Data Assets Legally, in Internet of Things: Tagungsband des 22. Internationalen Rechtsinformatik Symposions IRIS 2019 Proceedings of the 22nd International Legal Infomatics Symposium IRIS 2019 (2019), 4 |
 
 ### chapter
 Die Kategorie "chapter" umfasst Beiträge in Sammelbänden die keine Tagungsbände sind, Fest- und Gedächtnisschriften und Einträge in Kommentaren. Die dazugehörigen Sammelbände, Fest- und Gedächtnisschriften oder Kommentare werden in der Kategorie "book" erfasst.
@@ -99,13 +139,28 @@ Diese Umsetzung von AZR gibt für "chapter" folgende Informationen wieder:
 - locator: Eine Seite oder eine Randzahl auf die besonders hingewiesen werden soll.
 
 Beispiel Beiträge in Sammelbänden:
-![Sammlungsbeitrag](Beispiele/Sammlungsbeitrag.jpg?raw=true "Sammlungsbeitrag")
+
+| | |
+|---|---|
+| **Individual Citations** | *Bayern* in Research Handbook on the Law of Artificial Intelligence 144. |
+| **Single Citation (with position "first")** | *Bayern*, Artificial intelligence and private law, in *Barfield/Pagallo* (Hrsg), Research Handbook on the Law of Artificial Intelligence (2018), 144. |
+| **Bibliography** | *Bayern*, Artificial intelligence and private law, in *Barfield/Pagallo* (Hrsg), Research Handbook on the Law of Artificial Intelligence (2018), 144 |
 
 Beispiel für Beiträge in Fest- oder Gedächtnisschriften:
-![Schriftenbeitrag](Beispiele/Schriftenbeitrag.jpg?raw=true "Schriftenbeitrag")
+
+| | |
+|---|---|
+| **Individual Citations** | *Neumayr* in FS 200 Jahre ABGB 495. |
+| **Single Citation (with position "first")** | *Neumayr*, Die Entwicklung des Kindschaftsrechts - Vom 20. Jahrhundert bis zur Gegenwart, in FS 200 Jahre ABGB (2011), 495. |
+| **Bibliography** | *Neumayr*, Die Entwicklung des Kindschaftsrechts - Vom 20. Jahrhundert bis zur Gegenwart, in FS 200 Jahre ABGB (2011), 495 |
 
 Beispiel für Einträge in Kommentaren:
-![Kommentareintrag](Beispiele/Kommentareintrag.jpg?raw=true "Kommentareintrag")
+
+| | |
+|---|---|
+| **Individual Citations** | *Jabornegg/Geist* in *Jabornegg/Strasser*, AktG II<sup>5</sup> § 254 RZ 5. |
+| **Single Citation (with position "first")** | *Jabornegg/Geist* in *Jabornegg/Strasser*, AktG II<sup>5</sup> (2005) § 254 RZ 5. |
+| **Bibliography** | |
 
 ### book
 Die Kategorie "book" umfasst alle Formen von Büchern, das bedeutet Kommentare, Tagungs- und sonstige Sammelbände, Fest- und Gedächtnisschriften und sonstige Bücher. Die jeweiligen Beiträge zu den zuvor genannten Werken werden in der Kategorie "chapter" bzw. "paper-conference" erfasst.
@@ -119,10 +174,20 @@ Diese Umsetzung von AZR gibt für "book" folgende Informationen wieder:
 - locator: Eine Seite auf die besonders hingewiesen werden soll.
 
 Beispiel für Kommentare:
-![Kommentar](Beispiele/Kommentar.jpg?raw=true "Kommentar")
+
+| | |
+|---|---|
+| **Individual Citations** | *Jabornegg/Strasser*, AktG. |
+| **Single Citation (with position "first")** | *Jabornegg/Strasser*, AktG II<sup>5</sup> (2005). |
+| **Bibliography** | *Jabornegg/Strasser*, AktG II<sup>5</sup> (2005) |
 
 Beispiel für sonstige Bücher:
-![Buch](Beispiele/Buch.jpg?raw=true "Buch")
+
+| | |
+|---|---|
+| **Individual Citations** | *Schweighofer*, Rechtsinformatik und Wissensrepräsentation. |
+| **Single Citation (with position "first")** | *Schweighofer*, Rechtsinformatik und Wissensrepräsentation: automatische Textanalyse im Völkerrecht und Europarecht (1999). |
+| **Bibliography** | *Schweighofer*, Rechtsinformatik und Wissensrepräsentation: automatische Textanalyse im Völkerrecht und Europarecht (1999) |
 
 ### thesis
 Die Kategorie "thesis" umfasst Dissertationen.
@@ -134,7 +199,12 @@ Diese Umsetzung von AZR gibt für "thesis" folgende Informationen wieder:
 - locator: Eine Seite auf die hingewiesen werden soll.
 
 Beispiel für Dissertationen:
-![Dissertation](Beispiele/Dissertation.jpg?raw=true "Dissertation")
+
+| | |
+|---|---|
+| **Individual Citations** | *Scharf*, Wissensrepräsentation und automatisierte Entscheidungsfindung am Beispiel des Kriegsopferversorgungsgesetzes. |
+| **Single Citation (with position "first")** | *Scharf*, Wissensrepräsentation und automatisierte Entscheidungsfindung am Beispiel des Kriegsopferversorgungsgesetzes Universität Wien (2015). |
+| **Bibliography** | *Scharf*, Wissensrepräsentation und automatisierte Entscheidungsfindung am Beispiel des Kriegsopferversorgungsgesetzes Universität Wien (2015) |
 
 ### webpage & post-weblog
 Die Kategorien "webpage" und "post-weblog" umfassen Informationen auf Webseiten, Blogpost udgl.
@@ -146,7 +216,12 @@ Diese Umsetzung von AZR gibt für "webpage" & "post-weblog" folgende Information
 - accessed: Datum des letzten Aufrufens des Webseite.
 
 Beispiel für Webtexte:
-![Webtext](Beispiele/Webtext.jpg?raw=true "Webtext")
+
+| | |
+|---|---|
+| **Individual Citations** | *Vary/Mutimear*, Artificial Intelligence – Navigating the IP challenges https://www.mobileworldlive.com/intellectual-property-news/artificial-intelligence-navigating-the-ip-challenges/ (aufgerufen am 11.06.2019). |
+| **Single Citation (with position "first")** | *Vary/Mutimear*, Artificial Intelligence – Navigating the IP challenges https://www.mobileworldlive.com/intellectual-property-news/artificial-intelligence-navigating-the-ip-challenges/ (aufgerufen am 11.06.2019). |
+| **Bibliography** | *Vary/Mutimear*, Artificial Intelligence – Navigating the IP challenges https://www.mobileworldlive.com/intellectual-property-news/artificial-intelligence-navigating-the-ip-challenges/ (aufgerufen am 11.06.2019) |
 
 ### Andere
 Alle nicht in den oben genannten Kategorien enthaltenen Werke werden gleich behandelt.
