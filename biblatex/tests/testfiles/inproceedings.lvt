@@ -1,0 +1,44 @@
+% Test: inproceedings citations (AZR Rule 71)
+% Tests conference proceedings contributions
+%
+% Entries used ONLY via \nocite in \OMIT are genuine Erstzitate in the TEST block.
+% Entries \footcite'd in \OMIT are Folgezitate in the TEST block.
+\input{regression-test}
+\documentclass{article}
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\newif\ifbblexists
+\IfFileExists{\jobname.bbl}{\bblexiststrue}{\bblexistsfalse}
+
+\begin{document}
+
+% havur2019: \nocite for Erstzitat, then Folgezitat after first \footcite
+\OMIT
+\nocite{havur2019}
+\clearpage
+\TIMO
+
+\ifbblexists
+\START
+
+% --- Test 1: Conference proceedings Erstzitat (Rule 71) ---
+% Expected: Havur/Steyskal/Panasiuk/Fensel/Mireles (maxnames=5),
+%           DALICC: A Framework ...,
+%           in Internet of Things: Tagungsband ... (2019), 4
+% Note: no (Hrsg) since havur2019 has no editor field
+\TEST{Inproceedings: conference paper Erstzitat}{%
+  \setbox0=\vbox{\footcite{havur2019}}%
+  \showbox0%
+}
+
+% --- Test 2: Conference proceedings Folgezitat ---
+\TEST{Inproceedings: conference paper Folgezitat}{%
+  \setbox0=\vbox{\footcite{havur2019}}%
+  \showbox0%
+}
+
+\END
+\fi
+
+\end{document}

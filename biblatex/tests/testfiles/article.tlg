@@ -1,0 +1,519 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: Article: Erstzitat without postnote
+============================================================
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line ....
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line ....
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line ....
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line ....
+> \box...=
+\vbox(8.14003+0.0)x345.0
+.\hbox(8.14003+0.0)x345.0, glue set 325.51387fil
+..\hbox(0.0+0.0)x15.0
+..\penalty 10000
+..\hbox(8.14003+0.0)x4.48613
+...\mathon
+...\hbox(4.51111+0.0)x4.48613, shifted -3.62892
+....\OT1/cmr/m/n/7 1
+...\mathoff
+..\penalty 10000
+..\glue(\parfillskip) 0.0 plus 1.0fil
+..\glue(\rightskip) 0.0
+.\insert253, natural size 19.04001; split(6.65,2.85002); float cost 20000
+..\hbox(6.68999+1.55556)x345.0, glue set - 0.28447
+...\hbox(6.68999+0.0)x15.30023, glue set 11.13362fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.68999+0.0)x4.16661
+.....\mathon
+.....\hbox(3.86665+0.0)x4.16661, shifted -2.82333
+......\OT1/cmr/m/n/6 1
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{1}{\the \c@page }}
+...\OT1/cmr/m/it/8 Z
+...\OT1/cmr/m/it/8 a
+...\OT1/cmr/m/it/8 n
+...\OT1/cmr/m/it/8 k
+...\OT1/cmr/m/it/8 l
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 K
+...\kern 0.23611 (for accent)
+...\OT1/cmr/m/n/8 ^^?
+...\kern -4.48618 (for accent)
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 s
+...\OT1/cmr/m/n/8 t
+...\OT1/cmr/m/n/8 l
+...\OT1/cmr/m/n/8 i
+...\OT1/cmr/m/n/8 c
+...\kern-0.23611
+...\OT1/cmr/m/n/8 h
+...\OT1/cmr/m/n/8 e
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 I
+...\OT1/cmr/m/n/8 n
+...\kern-0.23611
+...\OT1/cmr/m/n/8 t
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 l
+...\OT1/cmr/m/n/8 l
+...\OT1/cmr/m/n/8 i
+...\OT1/cmr/m/n/8 g
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 z
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 d
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 I
+...\OT1/cmr/m/n/8 m
+...\OT1/cmr/m/n/8 m
+...\OT1/cmr/m/n/8 a
+...\OT1/cmr/m/n/8 t
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 i
+...\OT1/cmr/m/n/8 a
+...\OT1/cmr/m/n/8 l
+...\OT1/cmr/m/n/8 g
+...\kern 0.23611 (for accent)
+...\OT1/cmr/m/n/8 ^^?
+...\kern -4.48618 (for accent)
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 t
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 c
+...\kern-0.23611
+...\OT1/cmr/m/n/8 h
+...\kern-0.23611
+...\OT1/cmr/m/n/8 t
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 b
+...\kern0.23611
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 i
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 C
+...\OT1/cmr/m/n/8 o
+...\OT1/cmr/m/n/8 m
+...\OT1/cmr/m/n/8 p
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 t
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 k
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 s
+...\OT1/cmr/m/n/8 t
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 c
+...\OT1/cmr/m/n/8 o
+...\OT1/cmr/m/n/8 l
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 x
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 0
+...\OT1/cmr/m/n/8 1
+...\OT1/cmr/m/n/8 9
+...\OT1/cmr/m/n/8 ,
+...\glue(\rightskip) 0.0
+..\penalty 400
+..\glue(\baselineskip) 2.78888
+..\hbox(5.15556+2.85002)x345.0, glue set 329.88867fil
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 4
+...\OT1/cmr/m/n/8 4
+...\OT1/cmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+<to be read again> 
+                   \endgroup 
+l. ...}
+============================================================
+============================================================
+TEST 2: Article: Folgezitat without postnote
+============================================================
+> \box...=
+\vbox(8.14003+0.0)x345.0
+.\hbox(8.14003+0.0)x345.0, glue set 325.51387fil
+..\hbox(0.0+0.0)x15.0
+..\penalty 10000
+..\hbox(8.14003+0.0)x4.48613
+...\mathon
+...\hbox(4.51111+0.0)x4.48613, shifted -3.62892
+....\OT1/cmr/m/n/7 2
+...\mathoff
+..\penalty 10000
+..\glue(\parfillskip) 0.0 plus 1.0fil
+..\glue(\rightskip) 0.0
+.\insert253, natural size 9.54001; split(6.65,2.85002); float cost 20000
+..\hbox(6.68999+2.85002)x345.0, glue set 238.94592fil
+...\hbox(6.68999+0.0)x15.30023, glue set 11.13362fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.68999+0.0)x4.16661
+.....\mathon
+.....\hbox(3.86665+0.0)x4.16661, shifted -2.82333
+......\OT1/cmr/m/n/6 2
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{2}{\the \c@page }}
+...\OT1/cmr/m/it/8 Z
+...\OT1/cmr/m/it/8 a
+...\OT1/cmr/m/it/8 n
+...\OT1/cmr/m/it/8 k
+...\OT1/cmr/m/it/8 l
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 c
+...\OT1/cmr/m/n/8 o
+...\OT1/cmr/m/n/8 l
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 x
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 0
+...\OT1/cmr/m/n/8 1
+...\OT1/cmr/m/n/8 9
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 4
+...\OT1/cmr/m/n/8 4
+...\OT1/cmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+<to be read again> 
+                   \endgroup 
+l. ...}
+============================================================
+============================================================
+TEST 3: Article: Folgezitat with postnote
+============================================================
+> \box...=
+\vbox(8.14003+0.0)x345.0
+.\hbox(8.14003+0.0)x345.0, glue set 325.51387fil
+..\hbox(0.0+0.0)x15.0
+..\penalty 10000
+..\hbox(8.14003+0.0)x4.48613
+...\mathon
+...\hbox(4.51111+0.0)x4.48613, shifted -3.62892
+....\OT1/cmr/m/n/7 3
+...\mathoff
+..\penalty 10000
+..\glue(\parfillskip) 0.0 plus 1.0fil
+..\glue(\rightskip) 0.0
+.\insert253, natural size 9.54001; split(6.65,2.85002); float cost 20000
+..\hbox(6.68999+2.85002)x345.0, glue set 216.75116fil
+...\hbox(6.68999+0.0)x15.30023, glue set 11.13362fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.68999+0.0)x4.16661
+.....\mathon
+.....\hbox(3.86665+0.0)x4.16661, shifted -2.82333
+......\OT1/cmr/m/n/6 3
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{3}{\the \c@page }}
+...\OT1/cmr/m/it/8 Z
+...\OT1/cmr/m/it/8 a
+...\OT1/cmr/m/it/8 n
+...\OT1/cmr/m/it/8 k
+...\OT1/cmr/m/it/8 l
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 c
+...\OT1/cmr/m/n/8 o
+...\OT1/cmr/m/n/8 l
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 x
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 0
+...\OT1/cmr/m/n/8 1
+...\OT1/cmr/m/n/8 9
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 4
+...\OT1/cmr/m/n/8 4
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 (
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 4
+...\OT1/cmr/m/n/8 5
+...\OT1/cmr/m/n/8 )
+...\OT1/cmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+<to be read again> 
+                   \endgroup 
+l. ...}
+============================================================
+============================================================
+TEST 4: Article: Erstzitat title ending with question mark
+============================================================
+> \box...=
+\vbox(8.14003+0.0)x345.0
+.\hbox(8.14003+0.0)x345.0, glue set 325.51387fil
+..\hbox(0.0+0.0)x15.0
+..\penalty 10000
+..\hbox(8.14003+0.0)x4.48613
+...\mathon
+...\hbox(4.51111+0.0)x4.48613, shifted -3.62892
+....\OT1/cmr/m/n/7 4
+...\mathoff
+..\penalty 10000
+..\glue(\parfillskip) 0.0 plus 1.0fil
+..\glue(\rightskip) 0.0
+.\insert253, natural size 10.23732; split(6.65,2.85002); float cost 20000
+..\hbox(7.3873+2.85002)x345.0, glue set 57.65454fil
+...\hbox(6.68999+0.0)x15.30023, glue set 11.13362fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.68999+0.0)x4.16661
+.....\mathon
+.....\hbox(3.86665+0.0)x4.16661, shifted -2.82333
+......\OT1/cmr/m/n/6 4
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{4}{\the \c@page }}
+...\kern 1.60278 (for accent)
+...\hbox(5.36508+0.0)x4.3889, shifted -2.02222
+....\OT1/cmr/m/it/8 ^^?
+...\kern -5.99168 (for accent)
+...\OT1/cmr/m/it/8 O
+...\OT1/cmr/m/it/8 h
+...\OT1/cmr/m/it/8 l
+...\OT1/cmr/m/it/8 i
+...\OT1/cmr/m/it/8 n
+...\OT1/cmr/m/it/8 g
+...\OT1/cmr/m/it/8 e
+...\OT1/cmr/m/it/8 r
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 I
+...\OT1/cmr/m/n/8 s
+...\OT1/cmr/m/n/8 t
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 d
+...\OT1/cmr/m/n/8 i
+...\OT1/cmr/m/n/8 e
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 B
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 c
+...\kern-0.23611
+...\OT1/cmr/m/n/8 h
+...\OT1/cmr/m/n/8 p
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 i
+...\OT1/cmr/m/n/8 s
+...\OT1/cmr/m/n/8 b
+...\OT1/cmr/m/n/8 i
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 d
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 g
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 v
+...\kern-0.23611
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 f
+...\OT1/cmr/m/n/8 a
+...\OT1/cmr/m/n/8 s
+...\OT1/cmr/m/n/8 s
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 g
+...\OT1/cmr/m/n/8 s
+...\OT1/cmr/m/n/8 k
+...\kern-0.23611
+...\OT1/cmr/m/n/8 o
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 f
+...\OT1/cmr/m/n/8 o
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 m
+...\OT1/cmr/m/n/8 ?
+...\glue 3.77783 plus 4.25288 minus 0.3146
+...\kern 1.18057 (for accent)
+...\hbox(5.36508+0.0)x4.25006, shifted -2.02222
+....\OT1/cmr/m/n/8 ^^?
+...\kern -5.43063 (for accent)
+...\OT1/cmr/m/n/8 O
+...\OT1/cmr/m/n/8 J
+...\OT1/cmr/m/n/8 Z
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 0
+...\OT1/cmr/m/n/8 0
+...\OT1/cmr/m/n/8 8
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 1
+...\OT1/cmr/m/n/8 1
+...\OT1/cmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+<to be read again> 
+                   \endgroup 
+l. ...}
+============================================================
+============================================================
+TEST 5: Article: Erstzitat with issue number
+============================================================
+> \box...=
+\vbox(8.14003+0.0)x345.0
+.\hbox(8.14003+0.0)x345.0, glue set 325.51387fil
+..\hbox(0.0+0.0)x15.0
+..\penalty 10000
+..\hbox(8.14003+0.0)x4.48613
+...\mathon
+...\hbox(4.51111+0.0)x4.48613, shifted -3.62892
+....\OT1/cmr/m/n/7 5
+...\mathoff
+..\penalty 10000
+..\glue(\parfillskip) 0.0 plus 1.0fil
+..\glue(\rightskip) 0.0
+.\insert253, natural size 9.54001; split(6.65,2.85002); float cost 20000
+..\hbox(6.68999+2.85002)x345.0, glue set 58.57117fil
+...\hbox(6.68999+0.0)x15.30023, glue set 11.13362fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.68999+0.0)x4.16661
+.....\mathon
+.....\hbox(3.86665+0.0)x4.16661, shifted -2.82333
+......\OT1/cmr/m/n/6 5
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{5}{\the \c@page }}
+...\OT1/cmr/m/it/8 Z
+...\OT1/cmr/m/it/8 o
+...\OT1/cmr/m/it/8 l
+...\kern0.43889
+...\OT1/cmr/m/it/8 l
+...\OT1/cmr/m/it/8 n
+...\OT1/cmr/m/it/8 e
+...\OT1/cmr/m/it/8 r
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 D
+...\OT1/cmr/m/n/8 i
+...\OT1/cmr/m/n/8 e
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 H
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 a
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 s
+...\OT1/cmr/m/n/8 f
+...\OT1/cmr/m/n/8 o
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 d
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 u
+...\OT1/cmr/m/n/8 n
+...\OT1/cmr/m/n/8 g
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 a
+...\OT1/cmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 d
+...\OT1/cmr/m/n/8 a
+...\OT1/cmr/m/n/8 s
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 E
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 b
+...\OT1/cmr/m/n/8 r
+...\OT1/cmr/m/n/8 e
+...\OT1/cmr/m/n/8 c
+...\kern-0.23611
+...\OT1/cmr/m/n/8 h
+...\kern-0.23611
+...\OT1/cmr/m/n/8 t
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 E
+...\OT1/cmr/m/n/8 F
+...\OT1/cmr/m/n/8 -
+...\discretionary
+...\OT1/cmr/m/n/8 Z
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 /
+...\penalty 50
+...\OT1/cmr/m/n/8 2
+...\OT1/cmr/m/n/8 0
+...\OT1/cmr/m/n/8 0
+...\OT1/cmr/m/n/8 8
+...\OT1/cmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\OT1/cmr/m/n/8 4
+...\OT1/cmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+<to be read again> 
+                   \endgroup 
+l. ...}
+============================================================
+Bad conditionals: 1!

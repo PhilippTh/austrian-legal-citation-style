@@ -1,0 +1,51 @@
+% Test: jurisdiction citations (AZR Rules 40-45)
+% Tests court decision citations for Austrian courts, EuGH, and EGMR
+%
+% Court decisions have no Erst-/Folgezitat distinction in AZR.
+% No cite:short:@jurisdiction is defined, so the verbose driver is always used.
+% We use \nocite to load entries without triggering the citetracker.
+\input{regression-test}
+\documentclass{article}
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\newif\ifbblexists
+\IfFileExists{\jobname.bbl}{\bblexiststrue}{\bblexistsfalse}
+
+\begin{document}
+
+\OMIT
+\nocite{ogh2004}
+\nocite{eugh2010}
+\nocite{egmr2000}
+\clearpage
+\TIMO
+
+\ifbblexists
+\START
+
+% --- Test 1: Austrian court decision (Rules 40-41) ---
+% Expected: OGH 16.7.2004, 7 Ob 120/04d, Testentscheidung
+\TEST{Jurisdiction: Austrian court decision}{%
+  \setbox0=\vbox{\footcite{ogh2004}}%
+  \showbox0%
+}
+
+% --- Test 2: EuGH decision (Rule 42) ---
+% Expected: EuGH 9.11.2010, C-296/10, Purrucker/Valles Perez
+\TEST{Jurisdiction: EuGH decision}{%
+  \setbox0=\vbox{\footcite{eugh2010}}%
+  \showbox0%
+}
+
+% --- Test 3: EGMR decision (Rule 43) ---
+% Expected: EGMR 26.10.2000, 30210/96, Kudla
+\TEST{Jurisdiction: EGMR decision}{%
+  \setbox0=\vbox{\footcite{egmr2000}}%
+  \showbox0%
+}
+
+\END
+\fi
+
+\end{document}

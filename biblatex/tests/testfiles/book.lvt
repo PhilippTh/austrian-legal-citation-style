@@ -1,0 +1,88 @@
+% Test: book citations (AZR Rules 77-86)
+% Tests monograph and commentary citations: Erstzitat, Folgezitat,
+% with volume, edition, shorttitle, and postnote
+%
+% Entries used ONLY via \nocite in \OMIT are genuine Erstzitate in the TEST block.
+% Entries \footcite'd in \OMIT are Folgezitate in the TEST block.
+\input{regression-test}
+\documentclass{article}
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\newif\ifbblexists
+\IfFileExists{\jobname.bbl}{\bblexiststrue}{\bblexistsfalse}
+
+\begin{document}
+
+% schweighofer1999, jabornegg2005, welser1994: \nocite for Erstzitat tests
+% knyrim_dsr: \footcite because we only test Folgezitat with postnote
+\OMIT
+\nocite{schweighofer1999}
+\nocite{jabornegg2005}
+\nocite{welser1994}
+\footcite{knyrim_dsr}
+\clearpage
+\TIMO
+
+\ifbblexists
+\START
+
+% --- Test 1: Monograph Erstzitat ---
+% AZR Rules 77, 86: Author, Title (Year)
+% Expected: Schweighofer, Rechtsinformatik und Wissensrepraesentation:
+%           automatische Textanalyse im Voelkerrecht und Europarecht (1999)
+\TEST{Book: monograph Erstzitat}{%
+  \setbox0=\vbox{\footcite{schweighofer1999}}%
+  \showbox0%
+}
+
+% --- Test 2: Monograph Folgezitat ---
+% AZR Rule 79: Short title in subsequent citations, no year
+% Expected: Schweighofer, Rechtsinformatik und Wissensrepraesentation
+\TEST{Book: monograph Folgezitat}{%
+  \setbox0=\vbox{\footcite{schweighofer1999}}%
+  \showbox0%
+}
+
+% --- Test 3: Commentary Erstzitat with volume and edition ---
+% AZR Rules 80, 82: Volume in Roman, edition as superscript
+% Expected: Jabornegg/Strasser, AktG II^5 (2005)
+\TEST{Book: commentary Erstzitat with volume and edition}{%
+  \setbox0=\vbox{\footcite{jabornegg2005}}%
+  \showbox0%
+}
+
+% --- Test 4: Commentary Folgezitat ---
+% Expected: Jabornegg/Strasser, AktG II^5
+\TEST{Book: commentary Folgezitat}{%
+  \setbox0=\vbox{\footcite{jabornegg2005}}%
+  \showbox0%
+}
+
+% --- Test 5: Book Erstzitat with postnote ---
+% AZR Rules 83, 25: Page without comma
+% Expected: Welser, Schadenersatz statt Gewaehrleistung (1994) 48
+\TEST{Book: Erstzitat with postnote}{%
+  \setbox0=\vbox{\footcite[48]{welser1994}}%
+  \showbox0%
+}
+
+% --- Test 6: Book Folgezitat with postnote ---
+% AZR Rule 79: Short title replaces full title
+% Expected: Welser, Schadenersatz 48
+\TEST{Book: Folgezitat with postnote}{%
+  \setbox0=\vbox{\footcite[48]{welser1994}}%
+  \showbox0%
+}
+
+% --- Test 7: Book Folgezitat with edition, page (Rule 25 - no comma before page after superscript) ---
+% Expected: Knyrim, Datenschutzrecht^2 103
+\TEST{Book: Folgezitat edition with page no comma}{%
+  \setbox0=\vbox{\footcite[103]{knyrim_dsr}}%
+  \showbox0%
+}
+
+\END
+\fi
+
+\end{document}

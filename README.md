@@ -1,239 +1,537 @@
-# Abkrzüngs- und Zitierregeln (AZR)
+# Abkuerzungs- und Zitierregeln (AZR)
 
-Dieses Repository enthält Umsetzungen des Zitierstils AZR(Abkürzungs- und Zitierregeln) 8. Auflage in citation style language (CSL) und biblatex.
+Dieses Repository enthaelt Umsetzungen des Zitierstils **AZR (Abkuerzungs- und Zitierregeln) 7. Auflage** in zwei Formaten:
 
-## Biblatex
+- **CSL** (Citation Style Language) -- fuer Zotero, Mendeley und andere Literaturverwaltungsprogramme
+- **biblatex** -- fuer LaTeX-Dokumente
 
-Der Zitierstil konnte in biblatex noch nicht fertig umgesetzt werden. Contributions sind erwünscht.
+## Projektstruktur
 
-## CSL
+```
+CSL/
+  azr-...csl              CSL-Stildatei
+biblatex/
+  biblatex.cfg             biblatex-Stildatei
+  Dockerfile               Docker-Image fuer Tests
+  Makefile                 Testbefehle
+  tests/
+    build.lua              l3build-Konfiguration
+    support/               biblatex.cfg (Symlink) + Testbibliografie
+    testfiles/             .lvt-Testdateien + .tlg-Referenzausgaben
+```
 
-Eine Umsetzung der AZR in citation style language (CSL). Diese Umsetzung erlaubt es Bibliographieprogrammen wie Zotero oder Mendeley automatisch AZR konforme Zitate zu erstellen. Im Folgenden werden auch Beispiele präsentiert, die auf Basis eines Bibtext files der in diesem repository gefunden werden kann mit dieser Umsetzung generiert wurden.
+## Umsetzungsstatus
 
-Folgende Kategorien werden verwendet:
+| Kategorie | CSL | biblatex |
+|---|---|---|
+| Zeitschriftenartikel | vollstaendig | vollstaendig |
+| Buecher/Kommentare | vollstaendig | vollstaendig |
+| Kommentareintraege | vollstaendig | vollstaendig |
+| Sammelbandsbeitraege | vollstaendig | vollstaendig |
+| Festschriftenbeitraege | vollstaendig | vollstaendig |
+| Tagungsbandsbeitraege | vollstaendig | vollstaendig |
+| Dissertationen | vollstaendig | vollstaendig |
+| Entscheidungen | vollstaendig | grundlegend |
+| Rechtsvorschriften | vollstaendig | grundlegend |
+| Onlinewerke | vollstaendig | offen |
+| Rechtssaetze | vollstaendig | offen |
 
-### bill - legislation
-Die Kategorien "bill" oder "legislation" umfassen österreichische und europäische Rechtsnormen. Um den unterschiedlichen Zitierweisen Rechnung zu tragen, wird das Feld "Genre" zur Unterscheidung verwendet. Solange das Feld "Genre" einen Wert enthält wird angenommen, dass es sich um eine europäische Richtlinie oder Verordnung handelt und die Zitierweise entsprechend angepasst.
-Diese Umsetzung von AZR gibt für "bill" oder "legislation" folgende Informationen wieder:
-- title oder short_title: Der Titel der Rechtsnorm beziehungsweise der Kurztitel bei nachfolgenden Zitaten.
-- container-title: Die Bezeichnung des Publikationsorgans.
-- volume: Der Jahrgang des Publikationsorgans.
-- section: Die Nummer im Publikationsorgan.
-- page-first: Gegebenenfalls die erste Seite der Veröffentlichung (zB bei dRGBL).
-- genre: Der Wert in genre wird nie verwendet. Wenn ein Wert angegeben ist, wird angenommen, dass es sich um Richtlinien oder Verordnungen der Europäischen Union handelt.
+Contributions sind willkommen.
 
-Beispiel für österreichische Rechtsnormen:
+---
 
-| | |
+## Eintraege korrekt erfassen
+
+Die folgenden Abschnitte beschreiben, wie Eintraege in der `.bib`-Datei zu erfassen sind, damit sowohl CSL als auch biblatex korrekte Zitate erzeugen. Fuer jede Kategorie werden die relevanten Felder und das erwartete Ergebnis dokumentiert.
+
+### Allgemeine Regeln
+
+Diese Regeln gelten fuer alle Kategorien (AZR Regeln 60-67):
+
+- **Autorennamen** werden kursiv gesetzt. Vornamen sind nur bei Verwechslungsgefahr anzufuehren. Akademische Grade und Titel entfallen.
+- **Mehrere Autoren** werden durch Schraegstrich `/` getrennt (AZR Regel 61).
+- **Bindestriche** nur bei Doppelnamen (AZR Regel 62), zB `Fischer-Czermak`.
+- **Titel** ohne Anfuehrungszeichen (AZR Regel 63).
+- **Bandangaben** in roemischen Ziffern (AZR Regel 80).
+- **Auflagen** als hochgestellte Zahl (AZR Regel 82).
+- **Seitenzahlen** ohne das Wort "Seite" oder die Abkuerzung "S" (AZR Regel 25).
+
+### Zeitschriftenartikel (AZR Regeln 68-76)
+
+Aufsaetze in juristischen Zeitschriften.
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Autor | `author` | `author` | Autor des Aufsatzes |
+| Titel | `title` | `title` | Titel des Aufsatzes |
+| Zeitschrift | `container-title` | `journal` | Name der Zeitschrift |
+| Jahrgang | `volume` | `year` | Jahrgang/Jahr der Zeitschrift |
+| Nummer | `issue` | `number` oder `issue` | Nummer im Jahrgang (alternativ zur Seite) |
+| Startseite | `page` / `page-first` | `pages` | Erste Seite des Aufsatzes |
+
+**CSL-Typ:** `article-journal` | **biblatex-Typ:** `@article`
+
+**Beispiel `.bib`:**
+```bibtex
+@article{zankl2019,
+  author  = {Zankl, Wolfgang},
+  title   = {Kuenstliche Intelligenz und Immaterialgueterrecht bei Computerkunst},
+  journal = {ecolex},
+  year    = {2019},
+  pages   = {244--246},
+}
+```
+
+**Erstzitat:** *Zankl*, Kuenstliche Intelligenz und Immaterialgueterrecht bei Computerkunst, ecolex 2019, 244.
+
+**Folgezitat (AZR Regel 76):** *Zankl*, ecolex 2019, 244.
+
+**Pinpoint (AZR Regel 75):** *Zankl*, ecolex 2019, 244 (245).
+
+> Endet der Titel mit einem Frage- oder Rufzeichen, entfaellt der Beistrich nach dem Titel (AZR Regel 69).
+
+### Buecher (AZR Regeln 77-86)
+
+Kommentare, Sammelbande, Monografien und sonstige Buecher.
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Autor | `author` | `author` | Autor(en) des Buches |
+| Herausgeber | `editor` | `editor` | Herausgeber (bei Kommentaren, Sammelbaenden) |
+| Titel | `title` | `title` | Titel des Buches |
+| Kurztitel | `title-short` | `shorttitle` | Fuer Folgezitate (AZR Regel 79) |
+| Band | `volume` | `volume` | Bandnummer (roemisch) |
+| Auflage | `edition` | `edition` | Auflagenzahl (hochgestellt) |
+| Jahr | `issued` | `year` | Erscheinungsjahr |
+
+**CSL-Typ:** `book` | **biblatex-Typ:** `@book` (auch `@mvbook`)
+
+**Beispiel `.bib` (Monografie):**
+```bibtex
+@book{schweighofer1999,
+  author     = {Schweighofer, Erich},
+  title      = {Rechtsinformatik und Wissensrepraesentation},
+  shorttitle = {Rechtsinformatik},
+  year       = {1999},
+}
+```
+
+**Erstzitat (AZR Regel 86):** *Schweighofer*, Rechtsinformatik und Wissensrepraesentation (1999).
+
+**Folgezitat (AZR Regel 79):** *Schweighofer*, Rechtsinformatik.
+
+**Beispiel `.bib` (Kommentar mit Band und Auflage):**
+```bibtex
+@book{jabornegg2005,
+  author  = {Jabornegg and Strasser},
+  title   = {AktG},
+  volume  = {2},
+  edition = {5},
+  year    = {2005},
+}
+```
+
+**Erstzitat:** *Jabornegg/Strasser*, AktG II<sup>5</sup> (2005).
+
+> Bei Aufeinandertreffen einer hochgestellten Auflagenzahl mit einer Seitenzahl ist kein Beistrich zu setzen (AZR Regel 25).
+
+### Kommentareintraege (AZR Regel 78)
+
+Beitraege einzelner Autoren zu einem von mehreren verfassten Kommentar.
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Autor | `author` | `author` | Autor des Beitrags |
+| Paragraph | -- | `title` | Paragraphenangabe, zB `\S~254` |
+| Herausgeber | `editor` | `editor` | Herausgeber des Kommentars |
+| Buchtitel | `container-title` | `booktitle` | Titel des Kommentars |
+| Band | `volume` | `volume` | Bandnummer (roemisch) |
+| Auflage | `edition` | `edition` | Auflagenzahl (hochgestellt) |
+| Jahr | `issued` | `year` | Erscheinungsjahr |
+
+**CSL-Typ:** `chapter` (ohne `title`) | **biblatex-Typ:** `@inbook`
+
+**Abgrenzung zu `@incollection`:** Der Typ `@inbook` ist ausschliesslich fuer Kommentareintraege (AZR Regel 78) vorgesehen. Es wird kein `(Hrsg)` nach dem Herausgeber angezeigt, da die Herausgebernamen Teil der Werkbezeichnung sind. Beitraege in Sammelbanden, Festschriften oder Tagungsbaenden (AZR Regeln 70-71) sind mit `@incollection` bzw `@inproceedings` zu erfassen.
+
+Das Feld `title` enthaelt die Paragraphenangabe (zB `\S~254`), die den Beitrag identifiziert (AZR Regel 78). Sie wird immer angezeigt. Die Randzahl (Rz) variiert je nach Zitierungsstelle und wird als Postnote uebergeben.
+
+**Beispiel `.bib`:**
+```bibtex
+@inbook{jabornegg_geist2005,
+  author   = {Jabornegg and Geist},
+  title    = {\S~254},
+  crossref = {jabornegg2005},
+}
+```
+
+> Die Felder `booktitle`, `volume`, `edition` und `year` werden automatisch vom `@book`-Eintrag `jabornegg2005` geerbt (siehe oben).
+
+**Erstzitat:** `\footcite[Rz 5]{jabornegg_geist2005}` &rarr; *Jabornegg/Geist* in *Jabornegg/Strasser*, AktG II<sup>5</sup> (2005) &sect; 254 Rz 5.
+
+**Folgezitat:** `\footcite[Rz 5]{jabornegg_geist2005}` &rarr; *Jabornegg/Geist* in *Jabornegg/Strasser*, AktG II<sup>5</sup> &sect; 254 Rz 5.
+
+> Kommentareintraege (`@inbook`) scheinen automatisch nicht im Literaturverzeichnis auf. Ueber das Feld `crossref` wird der uebergeordnete `@book`-Eintrag verknuepft -- dieser erscheint dann automatisch im Literaturverzeichnis (dank `mincrossrefs=1`), ohne dass `\nocite` noetig ist. Ausserdem erbt der `@inbook`-Eintrag alle Felder (`booktitle`, `volume`, `edition`, `year`) vom `@book`, sodass keine Duplizierung noetig ist:
+>
+> ```bibtex
+> % Gesamtwerk -- erscheint automatisch im Literaturverzeichnis
+> @book{jabornegg2005,
+>   author  = {Jabornegg and Strasser},
+>   title   = {AktG},
+>   volume  = {2},
+>   edition = {5},
+>   year    = {2005},
+> }
+>
+> % Einzelbeitrag -- nur author, title und crossref noetig
+> @inbook{jabornegg_geist2005,
+>   author   = {Jabornegg and Geist},
+>   title    = {\S~254},
+>   crossref = {jabornegg2005},
+> }
+> ```
+
+> Bei allgemein bekannten Werken (AZR Regel 85) kann der `booktitle` im `.bib`-Eintrag direkt gekuerzt oder weggelassen werden. Beispiel: *Buchegger* in *Fasching/Konecny* II/2 &sect; 123 ZPO Rz 16.
+
+### Beitraege in Sammelbanden (AZR Regel 71)
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Autor | `author` | `author` | Autor des Beitrags |
+| Titel | `title` | `title` | Titel des Beitrags |
+| Herausgeber | `editor` | `editor` | Herausgeber des Sammelbandes |
+| Buchtitel | `container-title` | `booktitle` | Titel des Sammelbandes |
+| Jahr | `issued` | `year` | Erscheinungsjahr |
+| Startseite | `page` / `page-first` | `pages` | Erste Seite des Beitrags |
+
+**CSL-Typ:** `chapter` (mit `title` und `editor`) | **biblatex-Typ:** `@incollection`
+
+**Beispiel `.bib`:**
+```bibtex
+@incollection{deixler2001,
+  author    = {Deixler-Huebner},
+  title     = {Die neuen familienrechtlichen Verfahrensbestimmungen},
+  booktitle = {Reform des Kindschaftsrechts},
+  editor    = {Ferrari and Hopf},
+  year      = {2001},
+  pages     = {115},
+}
+```
+
+**Erstzitat:** *Deixler-Huebner*, Die neuen familienrechtlichen Verfahrensbestimmungen, in *Ferrari/Hopf* (Hrsg), Reform des Kindschaftsrechts (2001) 115.
+
+**Folgezitat (AZR Regel 76):** *Deixler-Huebner* in *Ferrari/Hopf* 115.
+
+### Beitraege in Fest- oder Gedaechtnisschriften (AZR Regel 70)
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Autor | `author` | `author` | Autor des Beitrags |
+| Titel | `title` | `title` | Titel des Beitrags |
+| Buchtitel | `container-title` | `booktitle` | zB "FS 200 Jahre ABGB" |
+| Jahr | `issued` | `year` | Erscheinungsjahr |
+| Startseite | `page` / `page-first` | `pages` | Erste Seite des Beitrags |
+
+**CSL-Typ:** `chapter` (mit `title`, ohne `editor`) | **biblatex-Typ:** `@incollection`
+
+> Bei Festschriften wird kein Herausgeber angegeben. Stattdessen wird der Buchtitel mit "FS" oder "GedS" eingeleitet.
+
+**Beispiel `.bib`:**
+```bibtex
+@incollection{neumayr2011,
+  author    = {Neumayr},
+  title     = {Die Entwicklung des Kindschaftsrechts},
+  booktitle = {FS 200 Jahre ABGB},
+  year      = {2011},
+  pages     = {495},
+}
+```
+
+**Erstzitat:** *Neumayr*, Die Entwicklung des Kindschaftsrechts, in FS 200 Jahre ABGB (2011) 495.
+
+**Folgezitat (AZR Regel 76):** *Neumayr* in FS 200 Jahre ABGB 495.
+
+### Beitraege in Tagungsbaenden (AZR Regel 71)
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Autor | `author` | `author` | Autor des Beitrags |
+| Titel | `title` | `title` | Titel des Beitrags |
+| Herausgeber | `editor` | (nicht erforderlich) | Herausgeber des Tagungsbands |
+| Buchtitel | `container-title` | `booktitle` | Titel des Tagungsbands |
+| Jahr | `issued` | `year` | Erscheinungsjahr |
+| Startseite | `page` / `page-first` | `pages` | Erste Seite des Beitrags |
+
+**CSL-Typ:** `paper-conference` | **biblatex-Typ:** `@inproceedings`
+
+**Beispiel `.bib`:**
+```bibtex
+@inproceedings{havur2019,
+  author    = {Havur, Giray and Steyskal, Simon and Panasiuk, Oleksandra},
+  title     = {DALICC: A Framework for Publishing and Consuming Data Assets Legally},
+  booktitle = {Internet of Things: Tagungsband des 22. Internationalen
+               Rechtsinformatik Symposions IRIS 2019},
+  year      = {2019},
+  pages     = {4},
+}
+```
+
+### Dissertationen
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Autor | `author` | `author` | Autor der Dissertation |
+| Titel | `title` | `title` | Titel der Dissertation |
+| Universitaet | `publisher` | `institution` | Universitaet |
+| Jahr | `issued` | `year` | Erscheinungsjahr |
+
+**CSL-Typ:** `thesis` | **biblatex-Typ:** `@thesis` (mit `type = {phdthesis}`)
+
+**Beispiel `.bib`:**
+```bibtex
+@thesis{scharf2015,
+  author      = {Scharf, Johannes},
+  title       = {Wissensrepraesentation und automatisierte Entscheidungsfindung
+                 am Beispiel des Kriegsopferversorgungsgesetzes},
+  type        = {phdthesis},
+  institution = {Universitaet Wien},
+  year        = {2015},
+}
+```
+
+**Erstzitat:** *Scharf*, Wissensrepraesentation und automatisierte Entscheidungsfindung am Beispiel des Kriegsopferversorgungsgesetzes (2015).
+
+### Entscheidungen (AZR Regeln 40-59)
+
+#### Oesterreichische Entscheidungen (AZR Regeln 40-41, 46-59)
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Gericht | `authority` | `institution` | zB OGH, VwGH, VfGH |
+| Datum | `issued` | `date` | Datum der Entscheidung |
+| Aktenzahl | `number` | `number` | Geschaeftszahl |
+| Schlagwort | `title` | `title` | Bezeichnung der Entscheidung (kursiv) |
+| Fundstelle | `container-title` | -- | Titel des Publikationsorgans |
+| Jahrgang | `volume` | -- | Jahrgang des Publikationsorgans |
+| Nummer | `section` | -- | Nummer im Publikationsorgan |
+| Seite | `page-first` | -- | Erste Seite |
+| Kommentator | `author` | -- | Verfasser einer Besprechung |
+| Vermerk | `note` | -- | zust, abl, einschr, zwfl, krit |
+
+**CSL-Typ:** `legal_case` | **biblatex-Typ:** `@jurisdiction`
+
+**Beispiel:** OGH 7 Ob 197/07g EF-Z 2008/86 (zust *Gitschthaler*).
+
+#### EuGH/EuG/EuGoeD (AZR Regel 42)
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Gericht | `authority` | `institution` | EuGH, EuG oder EuGoeD |
+| Datum | `issued` | `date` | Veroeffentlichungsdatum |
+| Aktenzahl | `number` | `number` | zB C-296/10 |
+| Parteien | `title` | `title` | Parteienbezeichnung (kursiv) |
+
+**Beispiel:** EuGH 9. 11. 2010, C-296/10, *Purrucker/Valles Perez*.
+
+#### EGMR (AZR Regel 43)
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Gericht | `authority` | `institution` | EGMR |
+| Datum | `issued` | `date` | Datum der Entscheidung |
+| Grosse Kammer | `note` | -- | "(GK)" bei Entscheidungen der Grossen Kammer |
+| Beschwerdenr. | `number` | `number` | Beschwerdenummer |
+| Name | `title` | `title` | Parteienbezeichnung (kursiv) |
+
+**Beispiel:** EGMR 26. 10. 2000 (GK), 30210/96, *Kudla* EGMR 2000-XI.
+
+#### Rechtssaetze (AZR Regel 59)
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Behoerde | `authority` | -- | "RIS-Justiz" |
+| Nummer | `title` | -- | zB RS0061119 |
+| Hinweis | `note` | -- | Letzte Zitierung |
+
+**Beispiel:** RIS-Justiz RS0061119, zuletzt OGH 14 Os 108/08a EvBl 2008/174.
+
+### Rechtsvorschriften (AZR Regeln 29-32)
+
+#### Oesterreichische Rechtsvorschriften (AZR Regeln 29-30)
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Titel | `title` | `title` | Bezeichnung der Rechtsvorschrift |
+| Kurztitel | `title-short` | -- | Abkuerzung fuer Folgezitate |
+| Publikationsorgan | `container-title` | -- | zB BGBl, LGBl, JABl |
+| Jahrgang | `volume` | -- | Jahrgang des Publikationsorgans |
+| Nummer | `section` | -- | Nummer der Rechtsvorschrift |
+| Seite | `page-first` | -- | Erste Seite (zB bei dRGBl) |
+
+**CSL-Typ:** `bill` oder `legislation` | **biblatex-Typ:** `@legislation`
+
+**Beispiel:** Einfuehrungserlass zur SMG-Novelle 2007 JABl 2008/9.
+
+#### EU-Rechtsvorschriften (AZR Regeln 31-32)
+
+Wie oesterreichische Rechtsvorschriften, aber:
+- `genre`: Wenn ein Wert angegeben ist, wird EU-Formatierung verwendet (der Wert selbst wird nie angezeigt).
+- Verordnungen werden mit "VO", Richtlinien mit "RL" abgekuerzt.
+- Zwischen Bezeichnung und Kundmachungsorgan wird ein Beistrich gesetzt.
+
+**Beispiel (Erstzitat):** RL 2003/9/EG des Rates vom 27. 1. 2003 zur Festlegung von Mindestnormen fuer die Aufnahme von Asylwerbern in den Mitgliedstaaten, ABl L 2003/31, 18.
+
+**Beispiel (Folgezitat):** AufnahmeRL 2003/9 ABl L 2003/31, 18.
+
+### Onlinewerke (AZR Regeln 87-88)
+
+| Feld | CSL-Feld | biblatex-Feld | Beschreibung |
+|---|---|---|---|
+| Autor | `author` | `author` | Autor des Textes |
+| Titel | `title` | `title` | Titel des Textes |
+| URL | `URL` | `url` | Webadresse |
+| Stand/Abfrage | `issued` / `accessed` | `urldate` | Datum des Stands oder Abrufs |
+
+**CSL-Typ:** `webpage` oder `post-weblog` | **biblatex-Typ:** `@online`
+
+**Beispiel:** *Vary/Mutimear*, Artificial Intelligence -- Navigating the IP challenges https://... (aufgerufen am 11.06.2019).
+
+---
+
+## Nicht automatisch umsetzbare Regeln
+
+Folgende AZR-Regeln koennen weder in CSL noch in biblatex vollstaendig automatisiert werden und muessen nach der Generierung manuell korrigiert werden:
+
+1. **Wiederholte Behoerdennennung:** Werden in derselben Fussnote mehrere Entscheidungen derselben Behoerde zitiert, entfaellt ab der zweiten Nennung die Behoerdenbezeichnung.
+2. **Mehrere Fundstellen:** Mehrere Veroeffentlichungsstellen derselben Entscheidung sind durch "=" zu verbinden.
+3. **Bedingter Beistrich nach dem Titel:** Nach dem Titel eines Beitrags wird nur dann ein Beistrich gesetzt, wenn der Titel nicht mit einem Satzzeichen endet (in biblatex umgesetzt, in CSL nicht moeglich).
+
+---
+
+## CSL-Stil
+
+### Installation
+
+Die CSL-Datei befindet sich unter `CSL/`. Sie kann direkt in Zotero oder Mendeley importiert werden:
+
+- **Zotero:** Einstellungen > Zitieren > Stile > "+" > Datei waehlen
+- **Mendeley:** Ansicht > Zitierstil > Weitere Stile > Datei ziehen
+
+### Besonderheiten
+
+- Das Feld `genre` dient als Schalter fuer EU-Formatierung (bei `legislation` und `legal_case`). Der Inhalt wird nie angezeigt -- es genuegt, einen beliebigen Wert einzutragen.
+- Bei `legal_case` ohne `genre` wird eine oesterreichische Entscheidung angenommen.
+- Bei `chapter` ohne `title` wird ein Kommentareintrag angenommen.
+- Bei `chapter` ohne `editor` wird eine Festschrift angenommen.
+- Kommentareintraege und Rechtssaetze erscheinen nicht im Literaturverzeichnis.
+- Die Bibliografie ist nach Literatur, Entscheidungen und Rechtsvorschriften sortiert.
+
+---
+
+## biblatex-Stil
+
+### Installation
+
+Die Datei `biblatex/biblatex.cfg` muss im selben Verzeichnis wie das LaTeX-Hauptdokument liegen oder im TeX-Suchpfad verfuegbar sein.
+
+```latex
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{literatur.bib}
+```
+
+> Die Option `style=authortitle` ist erforderlich. Der `biblatex.cfg` ueberschreibt den Zitierstil auf `verbose` und nutzt die `dashed`-Option des `authortitle`-Bibliografiestils.
+
+### Literaturverzeichnis
+
+Kommentareintraege (`@inbook`) erscheinen automatisch nicht im Literaturverzeichnis. Wenn `@inbook`-Eintraege das Feld `crossref` verwenden, wird der uebergeordnete `@book`-Eintrag automatisch ins Literaturverzeichnis aufgenommen -- ohne `\nocite` oder sonstige Eingriffe:
+
+```latex
+\printbibliography
+```
+
+> Technisch: `@inbook`-Eintraege erhalten automatisch die Option `skipbib` (via `DeclareSourcemap`). Die Option `mincrossrefs=1` sorgt dafuer, dass bereits ein einziger `@inbook`-Verweis den uebergeordneten `@book`-Eintrag ins Literaturverzeichnis aufnimmt.
+
+### Unterstuetzte Eintragstypen
+
+| biblatex-Typ | Beschreibung |
 |---|---|
-| **Individual Citations** | Einführungserlass zur SMG-Novelle 2007. |
-| **Single Citation (with position "first")** | Einführungserlass zur SMG-Novelle 2007 JABl 2008/9. |
-| **Bibliography** | Einführungserlass zur SMG-Novelle 2007 JABl 2008/9 |
+| `@article` | Zeitschriftenartikel |
+| `@book`, `@mvbook` | Buecher, Kommentare, Sammelbande |
+| `@inbook` | Kommentareintraege |
+| `@incollection` | Sammelbands- und Festschriftenbeitraege |
+| `@inproceedings` | Tagungsbandsbeitraege |
+| `@thesis`, `@report` | Dissertationen und Berichte |
+| `@jurisdiction` | Entscheidungen |
+| `@legislation` | Rechtsvorschriften |
+| `@online` | Onlinewerke (noch nicht implementiert) |
 
-Beispiel für Richtlinien oder Verordnungen der Europäischen Union:
+### Formatierungsregeln
 
-| | |
-|---|---|
-| **Individual Citations** | AufnahmeRL 2003/9 ABl I 2003/31, 18. |
-| **Single Citation (with position "first")** | RL 2003/9/EG des Rates vom 27. 1. 2003 zur Festlegung von Mindestnormen für die Aufnahme von Asylwerbern in den Mitgliedstaaten, ABl I 2003/31, 18. |
-| **Bibliography** | RL 2003/9/EG des Rates vom 27. 1. 2003 zur Festlegung von Mindestnormen für die Aufnahme von Asylwerbern in den Mitgliedstaaten, ABl I 2003/31, 18 |
+- Autorennamen werden kursiv gesetzt und durch `/` getrennt.
+- Titel ohne Anfuehrungszeichen und ohne Kursivierung.
+- Band in roemischen Ziffern, Auflage als hochgestellte Zahl.
+- Erstzitate enthalten den vollen Titel und das Erscheinungsjahr in Klammern.
+- Folgezitate verwenden den Kurztitel (falls vorhanden) ohne Jahresangabe.
+- Bei `@article` mit Postnote: Startseite gefolgt von der Postnote in Klammern.
 
-### legasl_case
-Die Kategorie "legal-case" umfasst Entscheidungen österreichischer Gerichte, des EuG, EuGH, EuGöD oder EGMR, sowie Rechtssätze. Wie bei "bill" wird auch hier das Feld "Genre" zur Unterscheidung von inländischen und "europäischen" Entscheidungen verwendet. Solange das Feld "Genre" einen Wert enthält, wird angenommen, dass es sich um eine "europäische" Entscheidung handelt.
-Diese Umsetzung von AZR gibt für "legal_case" folgende Informationen wieder:
-- authority: Das entscheidende Gericht.
-- issued: Das Datum der Entscheidung.
-- number: Die Aktenzahl der Entscheidung.
-- title: Ein Schlagwort mit dem die Entscheidung in der Praxis oder Lehre bezeichnet wird oder bei "europäischen" Entscheidungen die Parteien getrennt durch eine Querstrich.
-- locator: Bei "europäischen" Entscheidungen die RZ auf die hingewiesen werden soll. Bei österreichischen, eine Seite in der Fundstelle auf die hingewiesen werden soll.
-- container-title: Titel des Publikationsorgans. Entscheidungen des EGMR veröffentlicht dieser selbst.
-- volume: Ausgabe des Publikationsorgans. Bei Entscheidungen des EGMR ist dies die vierstellige Jahreszahl, einen Bindestrich und die Bandnummer in römischen Zahlen.
-- section: Die Nummer im Publikationsorgan.
-- page-first: Die erste Seite der Publikation auf der die Entscheidung zu finden ist.
-- author: Wenn die Entscheidung in der Publikation auch besprochen wird, der Name des Kommentators.
-- note: Gegebenenfalls kann durch die entsprechende Abkürzung angegeben werden, ob der Kommentator zustimmt (zust), ablehnt (abl), einschränkt(einschr), zweifelt(zwfl) oder kritisiert(krit). Bei Entscheidungen des EGMR kann in note mit (GK) angegeben werden, ob die große Kammer entschieden hat.
+---
 
-Für Rechtssätze wird RIS-Justiz als authority verwendet, als title die Nummer des Rechtssatzes beginnend mit "RS" und gegebenenfalls im Feld "note" Hinweise auf die letzte Zitierung.
+## Tests (biblatex)
 
-Beispiel für Entscheidungen österreichischer Gerichte:
+Der biblatex-Stil wird mit [l3build](https://ctan.org/pkg/l3build) getestet, dem Standard-Testframework der LaTeX3-Projekts. Die Tests laufen in einem Docker-Container mit TeX Live.
 
-| | |
-|---|---|
-| **Individual Citations** | OGH 4 Ob 105/11m, *123people.at*, ÖBl 2012/45 175 (zust *Büchele*). |
-| **Single Citation (with position "first")** | OGH 4 Ob 105/11m, *123people.at*, ÖBl 2012/45 175 (zust *Büchele*). |
-| **Bibliography** | OGH 4 Ob 105/11m, *123people.at*, ÖBl 2012/45 175 (zust *Büchele*) |
+### Voraussetzungen
 
-Beispiel für Entscheidungen EuG, EuGH, EuGöD:
+- [Docker](https://docs.docker.com/get-docker/)
 
-| | |
-|---|---|
-| **Individual Citations** | EuGH 9. 11. 2010 , C-296/10, *Purrucker/Valles Perez* EF-Z 2011. |
-| **Single Citation (with position "first")** | EuGH 9. 11. 2010 , C-296/10, *Purrucker/Valles Perez* EF-Z 2011. |
-| **Bibliography** | EuGH 9. 11. 2010 , C-296/10, *Purrucker/Valles Perez* EF-Z 2011 |
+### Befehle
 
-Beispiel für Entscheidungen EGMR:
+Alle Befehle werden aus dem Verzeichnis `biblatex/` ausgefuehrt:
 
-| | |
-|---|---|
-| **Individual Citations** | EGMR 26. 10. 2000 (GK), 30210/96, *Kudla* EGMR 2000–XI. |
-| **Single Citation (with position "first")** | EGMR 26. 10. 2000 (GK), 30210/96, *Kudla* EGMR 2000–XI. |
-| **Bibliography** | EGMR 26. 10. 2000 (GK), 30210/96, *Kudla* EGMR 2000–XI |
+```bash
+# Docker-Image bauen (einmalig)
+make build
 
-Beispiel für Rechtssätze:
+# Alle Regressionstests ausfuehren
+make test
 
-| | |
-|---|---|
-| **Individual Citations** | RIS-Justiz RS0061119, zuletzt OGH 14 Os 108/08a EvBl 2008/174. |
-| **Single Citation (with position "first")** | RIS-Justiz RS0061119, zuletzt OGH 14 Os 108/08a EvBl 2008/174. |
-| **Bibliography** | |
+# Referenzausgabe fuer einen einzelnen Test aktualisieren
+make save T=article
 
-### article-journal
-Die Kategorie "article-journal" umfasst Aufsätze in juristischen Zeitschriften.
-Diese Umsetzung von AZR gibt für "article-journal" folgende Informationen wieder:
-- author: Der Autor des Aufsatzes.
-- title: Der Titel des Aufsatzes.
-- container-title: Der Titel der Zeitschrift.
-- volume: Die Ausgabe des Magazins.
-- page-first: Die erste Seite des Aufsatzes im Magazin.
-- issue: Wenn keine Seite angegeben wird, wird die Nummer des Aufsatzes verwendet.
-- locator: Eine Seite auf die hingewiesen werden soll.
+# Referenzausgabe fuer alle Tests aktualisieren
+make save-all
 
-Beispiel für Aufsätze in Zeitschriften:
+# Build-Artefakte entfernen
+make clean
+```
 
-| | |
-|---|---|
-| **Individual Citations** | *Zankl*, ecolex 2019, 244. |
-| **Single Citation (with position "first")** | *Zankl*, Künstliche Intelligenz und Immaterialgüterrecht bei Computerkunst, ecolex 2019, 244. |
-| **Bibliography** | *Zankl*, Künstliche Intelligenz und Immaterialgüterrecht bei Computerkunst, ecolex 2019, 244 |
+### Teststruktur
 
-### paper-conference
-Die Kategorie "paper-conference" umfasst Beiträge in Tagungsbänden. Die dazugehörigen Tagungsbände werden in der Kategorie "book" erfasst.
-Diese Umsetzung von AZR gibt für "paper-conference" folgende Informationen wieder:
-- author: Der Autor des Beitrags.
-- title: Der Titel des Beitrags.
-- editor: Der Herausgeber des Beitrags.
-- container-title: Der Titel des Tagungsbandes.
-- issued: Das Datum der Veröffentlichung des Tagungsbandes.
-- page-first: Die erste Seite des Tagungsbandes, die den Beitrag enthält.
-- locator: Eine Seite des Beitrags auf die hingewiesen werden soll.
+Jeder Test besteht aus zwei Dateien in `biblatex/tests/testfiles/`:
 
-Beispiel für Beiträge in Tagungsbänden:
+- **`.lvt`** -- LaTeX-Testdokument, das Zitate mit `\footcite` erzeugt und die Ausgabe mit `\showbox` im Log erfasst.
+- **`.tlg`** -- Erwartete Referenzausgabe (wird mit `make save` generiert und bei `make test` verglichen).
 
-| | |
-|---|---|
-| **Individual Citations** | *Havur et al* in Internet of Things: Tagungsband des 22. Internationalen Rechtsinformatik Symposions IRIS 2019 Proceedings of the 22nd International Legal Infomatics Symposium IRIS 2019 4. |
-| **Single Citation (with position "first")** | *Havur et al*, DALICC: A Framework for Publishing and Consuming Data Assets Legally, in Internet of Things: Tagungsband des 22. Internationalen Rechtsinformatik Symposions IRIS 2019 Proceedings of the 22nd International Legal Infomatics Symposium IRIS 2019 (2019), 4. |
-| **Bibliography** | *Havur/Steyskal/Panasiuk/Fensel/Mireles/Pellegrini/Thurner/Polleres/Kirrane*, DALICC: A Framework for Publishing and Consuming Data Assets Legally, in Internet of Things: Tagungsband des 22. Internationalen Rechtsinformatik Symposions IRIS 2019 Proceedings of the 22nd International Legal Infomatics Symposium IRIS 2019 (2019), 4 |
+| Testdatei | Eintragstyp | AZR-Regeln |
+|---|---|---|
+| `article.lvt` | `@article` | 68-76 |
+| `book.lvt` | `@book` | 77-86 |
+| `inbook.lvt` | `@inbook` | 78 |
+| `incollection.lvt` | `@incollection` | 70-71 |
+| `inproceedings.lvt` | `@inproceedings` | 71 |
+| `thesis.lvt` | `@thesis` | -- |
+| `jurisdiction.lvt` | `@jurisdiction` | 40-45 |
+| `legislation.lvt` | `@legislation` | 29-32 |
 
-### chapter
-Die Kategorie "chapter" umfasst Beiträge in Sammelbänden die keine Tagungsbände sind, Fest- und Gedächtnisschriften und Einträge in Kommentaren. Die dazugehörigen Sammelbände, Fest- und Gedächtnisschriften oder Kommentare werden in der Kategorie "book" erfasst.
-Diese Umsetzung von AZR gibt für "chapter" folgende Informationen wieder:
-- author: Der Autor des Beitrags.
-- title: Der Titel des Beitrags. Wenn kein Titel angegeben wird, wird angenommen, dass es sich um einen Kommentareintrag handelt.
-- editor: Der Herausgeber des Sammelbandes oder Kommentars. Wenn kein Herausgeber angegeben wird, wird angenommen, dass es sich um eine Fest- oder Gedächtnisschrift handelt.
-- container-title: Der Titel des Sammelbandes, der Fest- oder Gedächtnisschrift oder des Kommentars.
-- volume: Der Band in römischen Zahlen und gegebenenfalls nach einem Querstrich der Teilband in arabischen Zahlen und gegebenenfalls noch ein Kleinbuchstabe. Nur bei Kommentareinträgen.
-- edition: Die Auflage des Kommentars. Nur bei Kommentareinträgen.
-- issued: Das Veröffentlichungsdatum.
-- page-first: Die erste Seite des Sammelbandes oder der Fest- oder Gedächtnisschrift auf der der Beitrag erscheint.
-- locator: Eine Seite oder eine Randzahl auf die besonders hingewiesen werden soll.
+### Workflow
 
-Beispiel Beiträge in Sammelbänden:
+1. **Stil aendern:** `biblatex/biblatex.cfg` bearbeiten.
+2. **Tests ausfuehren:** `make test` -- schlaegt fehl, wenn sich die Ausgabe geaendert hat.
+3. **Ausgabe pruefen:** Die Aenderung manuell gegen die AZR-Regeln pruefen.
+4. **Referenz aktualisieren:** `make save-all` um die neuen Referenzausgaben zu speichern.
+5. **Erneut testen:** `make test` -- sollte jetzt bestehen.
 
-| | |
-|---|---|
-| **Individual Citations** | *Bayern* in Research Handbook on the Law of Artificial Intelligence 144. |
-| **Single Citation (with position "first")** | *Bayern*, Artificial intelligence and private law, in *Barfield/Pagallo* (Hrsg), Research Handbook on the Law of Artificial Intelligence (2018), 144. |
-| **Bibliography** | *Bayern*, Artificial intelligence and private law, in *Barfield/Pagallo* (Hrsg), Research Handbook on the Law of Artificial Intelligence (2018), 144 |
+---
 
-Beispiel für Beiträge in Fest- oder Gedächtnisschriften:
+## Lizenz
 
-| | |
-|---|---|
-| **Individual Citations** | *Neumayr* in FS 200 Jahre ABGB 495. |
-| **Single Citation (with position "first")** | *Neumayr*, Die Entwicklung des Kindschaftsrechts - Vom 20. Jahrhundert bis zur Gegenwart, in FS 200 Jahre ABGB (2011), 495. |
-| **Bibliography** | *Neumayr*, Die Entwicklung des Kindschaftsrechts - Vom 20. Jahrhundert bis zur Gegenwart, in FS 200 Jahre ABGB (2011), 495 |
-
-Beispiel für Einträge in Kommentaren:
-
-| | |
-|---|---|
-| **Individual Citations** | *Jabornegg/Geist* in *Jabornegg/Strasser*, AktG II<sup>5</sup> § 254 RZ 5. |
-| **Single Citation (with position "first")** | *Jabornegg/Geist* in *Jabornegg/Strasser*, AktG II<sup>5</sup> (2005) § 254 RZ 5. |
-| **Bibliography** | |
-
-### book
-Die Kategorie "book" umfasst alle Formen von Büchern, das bedeutet Kommentare, Tagungs- und sonstige Sammelbände, Fest- und Gedächtnisschriften und sonstige Bücher. Die jeweiligen Beiträge zu den zuvor genannten Werken werden in der Kategorie "chapter" bzw. "paper-conference" erfasst.
-Diese Umsetzung von AZR gibt für "book" folgende Informationen wieder:
-- editor: Herausgeber des Kommentares, des Tagungs- oder sonstigen Sammelbändes oder der Fest- und Gedächtnisschrift.
-- author: Wenn kein Herausgeber angegeben ist, wird der Autor des Buches angegeben.
-- title: Titel des Buches.
-- volume: Der Band in römischen Zahlen und gegebenenfalls nach einem Querstrich der Teilband in arabischen Zahlen und gegebenenfalls noch ein Kleinbuchstabe.
-- edition: Die Auflage des Buches.
-- issued: Das Veröffentlichungsdatum.
-- locator: Eine Seite auf die besonders hingewiesen werden soll.
-
-Beispiel für Kommentare:
-
-| | |
-|---|---|
-| **Individual Citations** | *Jabornegg/Strasser*, AktG. |
-| **Single Citation (with position "first")** | *Jabornegg/Strasser*, AktG II<sup>5</sup> (2005). |
-| **Bibliography** | *Jabornegg/Strasser*, AktG II<sup>5</sup> (2005) |
-
-Beispiel für sonstige Bücher:
-
-| | |
-|---|---|
-| **Individual Citations** | *Schweighofer*, Rechtsinformatik und Wissensrepräsentation. |
-| **Single Citation (with position "first")** | *Schweighofer*, Rechtsinformatik und Wissensrepräsentation: automatische Textanalyse im Völkerrecht und Europarecht (1999). |
-| **Bibliography** | *Schweighofer*, Rechtsinformatik und Wissensrepräsentation: automatische Textanalyse im Völkerrecht und Europarecht (1999) |
-
-### thesis
-Die Kategorie "thesis" umfasst Dissertationen.
-Diese Umsetzung von AZR gibt für "thesis" folgende Informationen wieder:
-- author: Der Autor der Dissertation.
-- title: Der Titel der Dissertation.
-- publisher: Die Universität an der die Dissertation verfasst wurde.
-- issued: Das Datum der Veröffentlichung der Dissertation.
-- locator: Eine Seite auf die hingewiesen werden soll.
-
-Beispiel für Dissertationen:
-
-| | |
-|---|---|
-| **Individual Citations** | *Scharf*, Wissensrepräsentation und automatisierte Entscheidungsfindung am Beispiel des Kriegsopferversorgungsgesetzes. |
-| **Single Citation (with position "first")** | *Scharf*, Wissensrepräsentation und automatisierte Entscheidungsfindung am Beispiel des Kriegsopferversorgungsgesetzes Universität Wien (2015). |
-| **Bibliography** | *Scharf*, Wissensrepräsentation und automatisierte Entscheidungsfindung am Beispiel des Kriegsopferversorgungsgesetzes Universität Wien (2015) |
-
-### webpage & post-weblog
-Die Kategorien "webpage" und "post-weblog" umfassen Informationen auf Webseiten, Blogpost udgl.
-Diese Umsetzung von AZR gibt für "webpage" & "post-weblog" folgende Informationen wieder:
-- author: Der Autor des Textes.
-- title: Der Titel des Textes.
-- URL: Die Webadresse des Textes.
-- locator: Eine Seite oder Randzahl auf die besonders hingewiesen werden soll.
-- accessed: Datum des letzten Aufrufens des Webseite.
-
-Beispiel für Webtexte:
-
-| | |
-|---|---|
-| **Individual Citations** | *Vary/Mutimear*, Artificial Intelligence – Navigating the IP challenges https://www.mobileworldlive.com/intellectual-property-news/artificial-intelligence-navigating-the-ip-challenges/ (aufgerufen am 11.06.2019). |
-| **Single Citation (with position "first")** | *Vary/Mutimear*, Artificial Intelligence – Navigating the IP challenges https://www.mobileworldlive.com/intellectual-property-news/artificial-intelligence-navigating-the-ip-challenges/ (aufgerufen am 11.06.2019). |
-| **Bibliography** | *Vary/Mutimear*, Artificial Intelligence – Navigating the IP challenges https://www.mobileworldlive.com/intellectual-property-news/artificial-intelligence-navigating-the-ip-challenges/ (aufgerufen am 11.06.2019) |
-
-### Andere
-Alle nicht in den oben genannten Kategorien enthaltenen Werke werden gleich behandelt.
-Dabei werden für alle diese Werke folgende Informationen wiedergegeben:
-- author: Der Autor des Werkes.
-- title: Der Titel des Werkes.
-- container-title: Ein Medium in dem das Werk veröffentlicht wurde.
-- issued: Das Veröffentlichungsdatum.
-- locator: Eine Seite oder Randzahl auf die besonders hingewiesen werden soll.
-
-### Nicht umsetzbare Regeln
-Folgende Regeln können in CSL nicht umgesetzt werden und müssen daher nach Generierung manuell geändert werden.
-- Nach der Zitierung einer Entscheidung wird bei allen Entscheidungen in der selben Fußnote, die von derselben Behörde entschieden werden, jede weitere Nennung der Behörde unterlassen.
-- Wenn Entscheidungen über mehrere Fundstellen verfügen, wird jede weitere Fundstelle nach einem "=" angefügt.
-- Nach dem Titel eines Beitrags wird dann ein "," gesetzt, wenn der Titel nicht mit einem Satzzeichen endet.
+Creative Commons Attribution-ShareAlike 3.0 (CC BY-SA 3.0)

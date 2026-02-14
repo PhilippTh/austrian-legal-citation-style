@@ -1,0 +1,45 @@
+% Test: bibliography output
+% Verifies that:
+% 1. @inbook entries are automatically excluded from the bibliography (via skipbib)
+% 2. Parent @book entries are auto-included via crossref (with mincrossrefs=1)
+% 3. A parent @book appears only once even when multiple @inbook entries reference it
+\input{regression-test}
+\documentclass{article}
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\newif\ifbblexists
+\IfFileExists{\jobname.bbl}{\bblexiststrue}{\bblexistsfalse}
+
+\begin{document}
+
+% Cite TWO @inbook entries from the same parent (jabornegg2005):
+% jabornegg_geist2005 and geist_aktg_255 both have crossref = {jabornegg2005}.
+% The parent should appear only once in the bibliography.
+\OMIT
+\nocite{jabornegg_geist2005}
+\nocite{geist_aktg_255}
+\clearpage
+\TIMO
+
+\ifbblexists
+\START
+
+% --- Test 1: Parent @book appears exactly once ---
+% Two @inbook children reference jabornegg2005, but it should
+% appear only once in the bibliography.
+\TEST{Bibliography: parent book appears once despite two children}{%
+  \setbox0=\vbox{\printbibliography[heading=none]}%
+  \showbox0%
+}
+
+% --- Test 2: @inbook entries excluded despite being cited ---
+\TEST{Bibliography: inbook entries excluded}{%
+  \setbox0=\vbox{\printbibliography[type=inbook,heading=none]}%
+  \showbox0%
+}
+
+\END
+\fi
+
+\end{document}

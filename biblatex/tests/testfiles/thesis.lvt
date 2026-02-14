@@ -1,0 +1,54 @@
+% Test: thesis citations
+% Tests dissertation/thesis citations: Erstzitat vs Folgezitat
+%
+% Erstzitat: Author, Title (Year)
+% Folgezitat: Author, Shorttitle (or Title if no shorttitle), no year
+%
+% Entries used ONLY via \nocite in \OMIT are genuine Erstzitate in the TEST block.
+\input{regression-test}
+\documentclass{article}
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\newif\ifbblexists
+\IfFileExists{\jobname.bbl}{\bblexiststrue}{\bblexistsfalse}
+
+\begin{document}
+
+% scharf2015: \nocite for Erstzitat, then Folgezitat after first \footcite
+\OMIT
+\nocite{scharf2015}
+\clearpage
+\TIMO
+
+\ifbblexists
+\START
+
+% --- Test 1: PhD thesis Erstzitat ---
+% Expected: Scharf, Wissensrepraesentation und automatisierte Entscheidungsfindung
+%           am Beispiel des Kriegsopferversorgungsgesetzes (2015)
+\TEST{Thesis: PhD thesis Erstzitat}{%
+  \setbox0=\vbox{\footcite{scharf2015}}%
+  \showbox0%
+}
+
+% --- Test 2: Thesis Folgezitat ---
+% Expected: Scharf, Wissensrepraesentation und automatisierte Entscheidungsfindung
+%           am Beispiel des Kriegsopferversorgungsgesetzes
+% (no year, no shorttitle defined so full title used)
+\TEST{Thesis: PhD thesis Folgezitat}{%
+  \setbox0=\vbox{\footcite{scharf2015}}%
+  \showbox0%
+}
+
+% --- Test 3: Thesis Folgezitat with postnote ---
+% Expected: Scharf, Wissensrepraesentation ... 42
+\TEST{Thesis: Folgezitat with postnote}{%
+  \setbox0=\vbox{\footcite[42]{scharf2015}}%
+  \showbox0%
+}
+
+\END
+\fi
+
+\end{document}

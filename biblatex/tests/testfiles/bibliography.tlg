@@ -1,0 +1,92 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+============================================================
+TEST 1: Bibliography: parent book appears once despite two children
+============================================================
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line ....
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line ....
+> \box...=
+\vbox(30.64003+0.0)x345.0
+.\penalty -51
+.\glue 10.0 plus 4.0 minus 5.0
+.\glue(\parskip) 0.0
+.\glue(\parskip) 0.0
+.\hbox(8.14003+2.5)x330.0, glue set 181.83792fil, shifted 15.0
+..\hbox(0.0+0.0)x-15.0
+...\glue -15.0
+...\glue -20.00003
+...\glue -5.0
+...\hbox(0.0+0.0)x20.00003, glue set 20.00003fil
+....\glue 0.0 plus 1.0fil
+...\glue 5.0
+..\penalty 0
+..\write1{\abx@aux@page{1}{\the \c@page }}
+..\OT1/cmr/m/it/10 J
+..\OT1/cmr/m/it/10 a
+..\OT1/cmr/m/it/10 b
+..\kern-0.51112
+..\OT1/cmr/m/it/10 o
+..\OT1/cmr/m/it/10 r
+..\OT1/cmr/m/it/10 n
+..\OT1/cmr/m/it/10 e
+..\kern-0.51112
+..\OT1/cmr/m/it/10 g
+..\OT1/cmr/m/it/10 g
+..\kern 0.88472
+..\OT1/cmr/m/n/10 /
+..\penalty 50
+..\OT1/cmr/m/it/10 S
+..\OT1/cmr/m/it/10 t
+..\OT1/cmr/m/it/10 r
+..\kern-0.51112
+..\OT1/cmr/m/it/10 a
+..\OT1/cmr/m/it/10 s
+..\OT1/cmr/m/it/10 s
+..\OT1/cmr/m/it/10 e
+..\OT1/cmr/m/it/10 r
+..\OT1/cmr/m/n/10 ,
+..\glue 3.33333 plus 1.67165 minus 1.10779
+..\OT1/cmr/m/n/10 A
+..\OT1/cmr/m/n/10 k
+..\OT1/cmr/m/n/10 t
+..\OT1/cmr/m/n/10 G
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\OT1/cmr/m/n/10 I
+..\kern0.27779
+..\OT1/cmr/m/n/10 I
+..\mathon
+..\hbox(4.51111+0.0)x4.48613, shifted -3.62892
+...\OT1/cmr/m/n/7 5
+..\mathoff
+..\glue 3.33333 plus 1.66666 minus 1.11111
+..\OT1/cmr/m/n/10 (
+..\OT1/cmr/m/n/10 2
+..\OT1/cmr/m/n/10 0
+..\OT1/cmr/m/n/10 0
+..\OT1/cmr/m/n/10 5
+..\OT1/cmr/m/n/10 )
+..\OT1/cmr/m/n/10 .
+..\penalty 10000
+..\glue(\parfillskip) 0.0 plus 1.0fil
+..\glue(\rightskip) 0.0
+.\penalty -51
+.\glue 10.0 plus 3.0 minus 5.0
+! OK.
+<to be read again> 
+                   \endgroup 
+l. ...}
+============================================================
+============================================================
+TEST 2: Bibliography: inbook entries excluded
+============================================================
+LaTeX Warning: Empty bibliography on input line ....
+> \box...=
+\vbox(0.0+0.0)x0.0
+! OK.
+<to be read again> 
+                   \endgroup 
+l. ...}
+============================================================
+Bad conditionals: 1!

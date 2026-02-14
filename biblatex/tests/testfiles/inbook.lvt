@@ -1,0 +1,145 @@
+% Test: inbook citations -- Commentary entries
+% Covers AZR Rules 78, 80-86, 25
+%
+% Rule 78:  Author in Editor, BookTitle Volume^Edition (Year) S-ref
+% Rule 80:  Volume in Roman numerals, no punctuation before volume
+% Rule 82:  Edition as superscript after title or volume
+% Rule 25:  No comma between superscript edition and S-ref
+% Rule 84:  Cite by paragraph and Randzahl
+% Rule 85:  Well-known works: abbreviated/no title
+%
+% The title field holds the paragraph reference (S-ref) that identifies the
+% contribution.  The postnote carries the Rz which varies per citation.
+%
+% Entries used ONLY via \nocite in \OMIT are genuine Erstzitate in the TEST block.
+% Entries \footcite'd in \OMIT are Folgezitate in the TEST block.
+\input{regression-test}
+\documentclass{article}
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\newif\ifbblexists
+\IfFileExists{\jobname.bbl}{\bblexiststrue}{\bblexistsfalse}
+
+\begin{document}
+
+% jabornegg_geist2005: \nocite for Erstzitat, then Folgezitat after first \footcite
+% fabrizy2010: \nocite for Erstzitat tests
+% remaining entries: \footcite for Folgezitat-only tests
+\OMIT
+\nocite{jabornegg_geist2005}
+\nocite{fabrizy2010}
+\footcite{schroli_wk}
+\footcite{kodek_rechberger}
+\footcite{hausmaninger2005}
+\footcite{perner_klang}
+\clearpage
+\TIMO
+
+\ifbblexists
+\START
+
+% ==========================================================================
+% Rule 78: Erstzitat -- commentary entry with (Year)
+% ==========================================================================
+% AZR: Jabornegg/Geist in Jabornegg/Strasser, AktG II^5 (2005) S 254
+% Expected: Jabornegg/Geist in Jabornegg/Strasser, AktG II^5 (2005) S 254
+\TEST{R78: Erstzitat commentary entry with volume edition and paragraph}{%
+  \setbox0=\vbox{\footcite{jabornegg_geist2005}}%
+  \showbox0%
+}
+
+% ==========================================================================
+% Rule 78: Folgezitat -- same entry, now without (Year)
+% ==========================================================================
+% AZR: Jabornegg/Geist in Jabornegg/Strasser, AktG II^5 S 254
+% Expected: Jabornegg/Geist in Jabornegg/Strasser, AktG II^5 S 254
+\TEST{R78: Folgezitat commentary entry}{%
+  \setbox0=\vbox{\footcite{jabornegg_geist2005}}%
+  \showbox0%
+}
+
+% ==========================================================================
+% Rule 84: Folgezitat with Rz postnote
+% ==========================================================================
+% AZR: Jabornegg/Geist in Jabornegg/Strasser, AktG II^5 S 254 Rz 5
+% Expected: ... AktG II^5 S 254 Rz 5  (no parentheses around Rz)
+\TEST{R84: Folgezitat postnote with Rz}{%
+  \setbox0=\vbox{\footcite[Rz 5]{jabornegg_geist2005}}%
+  \showbox0%
+}
+
+% ==========================================================================
+% Rule 82 + 25: Erstzitat -- edition without volume, with (Year)
+% ==========================================================================
+% AZR: Fabrizy in Fabrizy, StGB^10 (2010) S 142
+% Expected: Fabrizy in Fabrizy, StGB^10 (2010) S 142
+\TEST{R82+25: Erstzitat edition without volume}{%
+  \setbox0=\vbox{\footcite{fabrizy2010}}%
+  \showbox0%
+}
+
+% ==========================================================================
+% Rule 25 + 84: Folgezitat -- no comma between edition and Rz
+% ==========================================================================
+% AZR: Fabrizy in Fabrizy, StGB^10 S 142 Rz 1
+% Expected: ... StGB^10 S 142 Rz 1
+\TEST{R25+84: Folgezitat no comma between edition and Rz}{%
+  \setbox0=\vbox{\footcite[Rz 1]{fabrizy2010}}%
+  \showbox0%
+}
+
+% ==========================================================================
+% Rule 78: Folgezitat -- commentary with only editor (no bookauthor)
+% ==========================================================================
+% AZR: Schroli in Hoepfel/Ratz, WK StGB^2 S 52
+% Expected: Schroli in Hoepfel/Ratz, WK StGB^2 S 52
+\TEST{R78: Folgezitat editor only, no bookauthor}{%
+  \setbox0=\vbox{\footcite{schroli_wk}}%
+  \showbox0%
+}
+
+% ==========================================================================
+% Rule 78: Folgezitat -- commentary with bookauthor (no editor)
+% ==========================================================================
+% AZR: Kodek in Rechberger, ZPO^5 S 503
+% Expected: Kodek in Rechberger, ZPO^5 S 503
+\TEST{R78: Folgezitat bookauthor present}{%
+  \setbox0=\vbox{\footcite{kodek_rechberger}}%
+  \showbox0%
+}
+
+% ==========================================================================
+% Rule 80: Folgezitat -- volume in Roman, no punctuation before volume
+% ==========================================================================
+% AZR: Hausmaninger in Fasching/Konecny, Kommentar zu den Zivilprozessgesetzen IV^2 S 616
+% Expected: ... Kommentar zu den Zivilprozessgesetzen IV^2 S 616
+\TEST{R80: Folgezitat volume in roman no punctuation before it}{%
+  \setbox0=\vbox{\footcite{hausmaninger2005}}%
+  \showbox0%
+}
+
+% ==========================================================================
+% Rule 85: Folgezitat -- well-known commentary without volume
+% ==========================================================================
+% AZR: Perner in Kerschner/Fenyves/Vonkilch, Klang^3 S 888
+% Expected: Perner in Kerschner/Fenyves/Vonkilch, Klang^3 S 888
+\TEST{R85: Folgezitat well-known commentary no volume}{%
+  \setbox0=\vbox{\footcite{perner_klang}}%
+  \showbox0%
+}
+
+% ==========================================================================
+% Rule 85: Folgezitat -- well-known commentary with Rz postnote
+% ==========================================================================
+% AZR: Perner in Kerschner/Fenyves/Vonkilch, Klang^3 S 888 Rz 2
+% Expected: ... Klang^3 S 888 Rz 2
+\TEST{R85: Folgezitat well-known commentary with Rz postnote}{%
+  \setbox0=\vbox{\footcite[Rz 2]{perner_klang}}%
+  \showbox0%
+}
+
+\END
+\fi
+
+\end{document}

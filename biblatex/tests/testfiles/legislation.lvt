@@ -1,0 +1,44 @@
+% Test: legislation citations (AZR Rules 29-32)
+% Tests legal norm citations for Austrian and EU legislation
+%
+% Legislation has no Erst-/Folgezitat distinction in AZR for the footnote form.
+% No cite:short:@legislation is defined, so the verbose driver is always used.
+% We use \nocite to load entries without triggering the citetracker.
+\input{regression-test}
+\documentclass{article}
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\newif\ifbblexists
+\IfFileExists{\jobname.bbl}{\bblexiststrue}{\bblexistsfalse}
+
+\begin{document}
+
+\OMIT
+\nocite{smg2007}
+\nocite{aufnahmerl2003}
+\clearpage
+\TIMO
+
+\ifbblexists
+\START
+
+% --- Test 1: Austrian legislation (Rules 29-30) ---
+% Expected: Einfuehrungserlass zur SMG-Novelle 2007
+\TEST{Legislation: Austrian law}{%
+  \setbox0=\vbox{\footcite{smg2007}}%
+  \showbox0%
+}
+
+% --- Test 2: EU directive (Rules 31-32) ---
+% Expected: RL 2003/9/EG des Rates vom 27. 1. 2003 zur Festlegung
+%           von Mindestnormen fuer die Aufnahme von Asylwerbern in den Mitgliedstaaten
+\TEST{Legislation: EU directive}{%
+  \setbox0=\vbox{\footcite{aufnahmerl2003}}%
+  \showbox0%
+}
+
+\END
+\fi
+
+\end{document}

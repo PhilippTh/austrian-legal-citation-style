@@ -1,0 +1,347 @@
+% =============================================================================
+% Test bibliography for AZR biblatex citation style
+% Based on examples from AZR (Abkuerzungs- und Zitierregeln) 8th edition
+% and Beispiele/Beispiele.bib
+% =============================================================================
+
+% =============================================================================
+% ARTICLE - Journal articles (Rules 68-76)
+% =============================================================================
+
+% Standard journal article with page number
+% AZR Rule 68-73: Author, Title, Journal Year, Page
+% Expected first citation: Zankl, Kuenstliche Intelligenz und Immaterialgueterrecht bei Computerkunst, ecolex 2019, 244
+% Expected subsequent:     Zankl, ecolex 2019, 244
+@article{zankl2019,
+  author  = {Zankl, Wolfgang},
+  title   = {K{\"u}nstliche Intelligenz und Immaterialg{\"u}terrecht bei Computerkunst},
+  journal = {ecolex},
+  year    = {2019},
+  pages   = {244--246},
+}
+
+% Article with issue number (Rule 74)
+% Expected first citation: Oehlinger, Ist die Buchpreisbindung verfassungskonform? OEJZ 2008, 211
+@article{oehlinger2008,
+  author  = {{\"O}hlinger, Theo},
+  title   = {Ist die Buchpreisbindung verfassungskonform?},
+  journal = {{\"O}JZ},
+  year    = {2008},
+  pages   = {211--215},
+}
+
+% Article with explicit issue/number field
+% Expected first citation: Zollner, Die neuen Herausforderungen an das Erbrecht, EF-Z 2008/2
+@article{zollner2008,
+  author  = {Zollner, Johannes},
+  title   = {Die neuen Herausforderungen an das Erbrecht},
+  journal = {EF-Z},
+  year    = {2008},
+  number  = {2},
+  pages   = {4--8},
+}
+
+% Article: P. Bydlinski example from Rule 60
+% Expected first citation: P. Bydlinski, Weite Verschuldensunabhaengige Verkaeufer-haftung nach Selbsteinbau durch den Verkaeufer? OEJZ 2011/93, 893
+@article{bydlinski2011,
+  author  = {Bydlinski, Peter},
+  title   = {Weite Verschuldens\-unab\-h{\"a}ngige Verk{\"a}ufer\-haftung nach Selbsteinbau durch den Verk{\"a}ufer?},
+  journal = {{\"O}JZ},
+  year    = {2011},
+  number  = {93},
+  pages   = {893--898},
+}
+
+% =============================================================================
+% BOOK - Monographs, Commentaries (Rules 77-86)
+% =============================================================================
+
+% Simple monograph
+% AZR Rule 77, 79, 86: Author, Title (Year) Page
+% Expected first citation: Schweighofer, Rechtsinformatik und Wissensrepr{\"a}sentation: automatische Textanalyse im V{\"o}lkerrecht und Europarecht (1999)
+% Expected subsequent:     Schweighofer, Rechtsinformatik und Wissensrepr{\"a}sentation
+@book{schweighofer1999,
+  author     = {Schweighofer, Erich},
+  title      = {Rechtsinformatik und Wissensrepr{\"a}sentation: automatische Textanalyse im V{\"o}lkerrecht und Europarecht},
+  shorttitle = {Rechtsinformatik und Wissensrepr{\"a}sentation},
+  year       = {1999},
+}
+
+% Commentary with volume and edition (Rules 80, 82)
+% Expected first citation: Jabornegg/Strasser, AktG II^5 (2005)
+% Expected subsequent:     Jabornegg/Strasser, AktG II^5
+@book{jabornegg2005,
+  author  = {Jabornegg and Strasser},
+  title   = {AktG},
+  volume  = {2},
+  edition = {5},
+  year    = {2005},
+}
+
+% Book with single author, edition, page reference (Rule 82-83, 86)
+% Expected first citation: Welser, Schadenersatz statt Gew{\"a}hrleistung (1994)
+@book{welser1994,
+  author     = {Welser, Rudolf},
+  title      = {Schadenersatz statt Gew{\"a}hrleistung},
+  shorttitle = {Schadenersatz},
+  year       = {1994},
+}
+
+% Book: Kodek example (Rule 86)
+% Expected first citation: G. Kodek, Besitzst{\"o}rung (2002)
+@book{kodek2002,
+  author = {Kodek, Georg},
+  title  = {Besitzst{\"o}rung},
+  year   = {2002},
+}
+
+% Multi-volume commentary (Rule 80-81)
+% Expected: Fasching/Konecny, Kommentar IV/2
+@book{fasching_kommentar,
+  author  = {Fasching and Konecny},
+  title   = {Kommentar zu den Zivilprozessgesetzen},
+  shorttitle = {Kommentar},
+  volume  = {4},
+  year    = {2005},
+  edition = {2},
+}
+
+% Book with edition as superscript (Rule 25 - no comma before page after superscript)
+% Expected: Knyrim, Datenschutzrecht^2
+@book{knyrim_dsr,
+  author  = {Knyrim, Rainer},
+  title   = {Datenschutzrecht},
+  edition = {2},
+  year    = {2012},
+}
+
+% =============================================================================
+% INBOOK - Commentary entries (Rule 78)
+%
+% Commentary entries use crossref to link to their parent @book.
+% This avoids duplicating booktitle, editor, volume, edition, year.
+% With mincrossrefs=1, the parent @book is automatically included
+% in the bibliography; the @inbook entries are excluded via skipbib.
+% =============================================================================
+
+% --- Parent @book entries for commentaries ---
+
+% WK StGB commentary (parent for schroli_wk)
+@book{wk_stgb,
+  author  = {H{\"o}pfel and Ratz},
+  title   = {WK StGB},
+  edition = {2},
+  year    = {2010},
+}
+
+% Fabrizy StGB commentary (parent for fabrizy2010)
+@book{fabrizy_stgb,
+  author  = {Fabrizy},
+  title   = {StGB},
+  edition = {10},
+  year    = {2010},
+}
+
+% Rechberger ZPO commentary (parent for kodek_rechberger)
+@book{rechberger_zpo,
+  author  = {Rechberger},
+  title   = {ZPO},
+  edition = {5},
+  year    = {2019},
+}
+
+% Klang commentary (parent for perner_klang)
+@book{klang,
+  author  = {Kerschner and Fenyves and Vonkilch},
+  title   = {Klang},
+  edition = {3},
+  year    = {2014},
+}
+
+% --- @inbook entries with crossref ---
+
+% Commentary entry: Jabornegg/Geist in AktG (Rule 78)
+% crossref inherits: booktitle=AktG, bookauthor=Jabornegg/Strasser, volume, edition, year
+% Expected: Jabornegg/Geist in Jabornegg/Strasser, AktG II^5 S 254
+@inbook{jabornegg_geist2005,
+  author   = {Jabornegg and Geist},
+  title    = {\S~254},
+  crossref = {jabornegg2005},
+}
+
+% Second commentary entry from the same parent (for bibliography dedup test)
+% Expected: Geist in Jabornegg/Strasser, AktG II^5 S 255
+@inbook{geist_aktg_255,
+  author   = {Geist},
+  title    = {\S~255},
+  crossref = {jabornegg2005},
+}
+
+% Commentary entry: Schroli in WK StGB (Rule 78)
+% crossref inherits: booktitle=WK StGB, bookauthor=Hoepfel/Ratz, edition, year
+% Expected: Schroli in Hoepfel/Ratz, WK StGB^2 S 52
+@inbook{schroli_wk,
+  author   = {Schroli},
+  title    = {\S~52},
+  crossref = {wk_stgb},
+}
+
+% Commentary: Fabrizy in StGB (Rule 82, 84)
+% crossref inherits: booktitle=StGB, bookauthor=Fabrizy, edition, year
+% Expected: Fabrizy in Fabrizy, StGB^10 S 142
+@inbook{fabrizy2010,
+  author   = {Fabrizy},
+  title    = {\S~142},
+  crossref = {fabrizy_stgb},
+}
+
+% Commentary: Kodek in Rechberger ZPO (Rule 78)
+% crossref inherits: booktitle=ZPO, bookauthor=Rechberger, edition, year
+% Expected: Kodek in Rechberger, ZPO^5 S 503
+@inbook{kodek_rechberger,
+  author   = {Kodek, Georg},
+  title    = {\S~503},
+  crossref = {rechberger_zpo},
+}
+
+% Commentary: Hausmaninger in Fasching/Konecny (Rule 80-81)
+% crossref inherits: booktitle, bookauthor, volume, edition, year
+% Expected: Hausmaninger in Fasching/Konecny, Kommentar zu den Zivilprozessgesetzen IV^2 S 616
+@inbook{hausmaninger2005,
+  author   = {Hausmaninger},
+  title    = {\S~616},
+  crossref = {fasching_kommentar},
+}
+
+% Commentary: Perner in Klang (Rule 85)
+% crossref inherits: booktitle=Klang, bookauthor=Kerschner/Fenyves/Vonkilch, edition, year
+% Expected: Perner in Kerschner/Fenyves/Vonkilch, Klang^3 S 888
+@inbook{perner_klang,
+  author   = {Perner},
+  title    = {\S~888},
+  crossref = {klang},
+}
+
+% =============================================================================
+% INCOLLECTION - Festschrift and Sammelband contributions (Rules 70-71)
+% =============================================================================
+
+% Festschrift contribution (Rule 70)
+% Expected first citation: Neumayr, Die Entwicklung des Kindschaftsrechts - Vom 20. Jahrhundert bis zur Gegenwart, in FS 200 Jahre ABGB (2011) 495
+% Expected subsequent:     Neumayr in FS 200 Jahre ABGB 495
+@incollection{neumayr2011,
+  author    = {Neumayr},
+  title     = {Die Entwicklung des Kindschaftsrechts - Vom 20. Jahrhundert bis zur Gegenwart},
+  booktitle = {FS 200 Jahre ABGB},
+  year      = {2011},
+  pages     = {495},
+}
+
+% Sammelband/collection contribution with editor (Rule 71)
+% Expected first citation: Deixler-Huebner, Die neuen familienrechtlichen Verfahrensbestimmungen, in Ferrari/Hopf (Hrsg), Reform des Kindschaftsrechts (2001) 115
+% Expected subsequent:     Deixler-Huebner in Ferrari/Hopf 115
+@incollection{deixler2001,
+  author    = {Deixler-H{\"u}bner},
+  title     = {Die neuen familienrechtlichen Verfahrensbestimmungen},
+  booktitle = {Reform des Kindschaftsrechts},
+  editor    = {Ferrari and Hopf},
+  year      = {2001},
+  pages     = {115},
+}
+
+% Collection contribution (from Beispiele.bib)
+% Expected first citation: Bayern, Artificial intelligence and private law, in (Ed) Research Handbook on the Law of Artificial Intelligence (2018), 144
+@incollection{bayern2018,
+  author    = {Bayern, Shawn},
+  title     = {Artificial intelligence and private law},
+  booktitle = {Research Handbook on the Law of Artificial Intelligence},
+  editor    = {Barfield and Pagallo},
+  year      = {2018},
+  pages     = {144--154},
+}
+
+% Festschrift: Schulev-Steindl (Rule 70)
+% Expected: Schulev-Steindl, Vom Wesen und Wert der Parteistellung, in FS Mayer (2011) 683
+@incollection{schulev2011,
+  author    = {Schulev-Steindl},
+  title     = {Vom Wesen und Wert der Parteistellung},
+  booktitle = {FS Mayer},
+  year      = {2011},
+  pages     = {683},
+}
+
+% =============================================================================
+% INPROCEEDINGS - Conference proceedings (Rule 71)
+% =============================================================================
+
+% Conference proceedings contribution
+% Expected first citation: Havur/Steyskal/Panasiuk/Fensel/Mireles/Pellegrini/Thurner/Polleres/Kirrane, DALICC: A Framework for Publishing and Consuming Data Assets Legally, in (Ed) Internet of Things... (2019), 4
+@inproceedings{havur2019,
+  author    = {Havur, Giray and Steyskal, Simon and Panasiuk, Oleksandra and Fensel, Anna and Mireles, Victor and Pellegrini, Tassilo and Thurner, Thomas and Polleres, Axel and Kirrane, Sabrina},
+  title     = {{DALICC}: {A} Framework for Publishing and Consuming Data Assets Legally},
+  booktitle = {Internet of Things: Tagungsband des 22. Internationalen Rechtsinformatik Symposions IRIS 2019},
+  year      = {2019},
+  pages     = {4},
+}
+
+% =============================================================================
+% THESIS - Dissertations
+% =============================================================================
+
+% Doctoral thesis
+% Expected first citation: Scharf, Wissensrepr{\"a}sentation und automatisierte Entscheidungsfindung am Beispiel des Kriegsopferversorgungsgesetzes (2015)
+% Expected subsequent:     Scharf, Wissensrepr{\"a}sentation und automatisierte Entscheidungsfindung...
+@thesis{scharf2015,
+  author      = {Scharf, Johannes},
+  title       = {Wissensrepr{\"a}sentation und automatisierte Entscheidungsfindung am Beispiel des Kriegsopferversorgungsgesetzes},
+  type        = {phdthesis},
+  institution = {Universit{\"a}t Wien},
+  year        = {2015},
+}
+
+% =============================================================================
+% JURISDICTION - Court decisions (Rules 40-45)
+% =============================================================================
+
+% Austrian court decision (Rule 40-41)
+% Expected: OGH 16.7.2004, 7 Ob 120/04d
+@jurisdiction{ogh2004,
+  institution = {OGH},
+  date        = {2004-07-16},
+  number      = {7 Ob 120/04\,d},
+  title       = {Testentscheidung},
+}
+
+% EuGH decision (Rule 42)
+% Expected: EuGH 9.11.2010, C-296/10, Purrucker/Vall{\'e}s Perez EF-Z 2011/100
+@jurisdiction{eugh2010,
+  institution = {EuGH},
+  date        = {2010-11-09},
+  number      = {C-296/10},
+  title       = {Purrucker/Vall{\'e}s Perez},
+}
+
+% EGMR decision (Rule 43)
+% Expected: EGMR 26.10.2000 (GK), 30210/96, Kudla EGMR 2000-XI
+@jurisdiction{egmr2000,
+  institution = {EGMR},
+  date        = {2000-10-26},
+  number      = {30210/96},
+  title       = {Kudla},
+}
+
+% =============================================================================
+% LEGISLATION - Legal norms (Rules 29-32)
+% =============================================================================
+
+% Austrian legislation (Rule 29-30)
+% Expected: Einf{\"u}hrungserlass zur SMG-Novelle 2007
+@legislation{smg2007,
+  title = {Einf{\"u}hrungserlass zur SMG-Novelle 2007},
+}
+
+% EU directive (Rule 31-32)
+% Expected: RL 2003/9/EG des Rates vom 27. 1. 2003 zur Festlegung von Mindestnormen...
+@legislation{aufnahmerl2003,
+  title = {RL 2003/9/EG des Rates vom 27. 1. 2003 zur Festlegung von Mindestnormen f{\"u}r die Aufnahme von Asylwerbern in den Mitgliedstaaten},
+}

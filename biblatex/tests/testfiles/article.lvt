@@ -1,0 +1,74 @@
+% Test: article citations (AZR Rules 68-76)
+% Tests journal article citations: Erstzitat, Folgezitat,
+% with and without postnote (pinpoint citation)
+%
+% Entries used ONLY via \nocite in \OMIT are genuine Erstzitate in the TEST block.
+% Entries \footcite'd in \OMIT are Folgezitate in the TEST block.
+\input{regression-test}
+\documentclass{article}
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+% Only run showbox tests after biber has processed (pass 2+)
+\newif\ifbblexists
+\IfFileExists{\jobname.bbl}{\bblexiststrue}{\bblexistsfalse}
+
+\begin{document}
+
+% Entries for Erstzitat tests: \nocite makes biber resolve them without
+% triggering the citetracker, so the first \footcite is a genuine Erstzitat.
+% Entries for Folgezitat tests: \footcite triggers the citetracker.
+\OMIT
+\nocite{zankl2019}
+\nocite{oehlinger2008}
+\nocite{zollner2008}
+\clearpage
+\TIMO
+
+\ifbblexists
+\START
+
+% --- Test 1: Article Erstzitat without postnote ---
+% AZR Rules 68-73: Author, Title, Journal Year, StartingPage
+% Expected: Zankl, Kuenstliche Intelligenz ..., ecolex 2019, 244
+\TEST{Article: Erstzitat without postnote}{%
+  \setbox0=\vbox{\footcite{zankl2019}}%
+  \showbox0%
+}
+
+% --- Test 2: Article Folgezitat without postnote ---
+% AZR Rule 76: Title drops in subsequent citations
+% Expected: Zankl, ecolex 2019, 244
+\TEST{Article: Folgezitat without postnote}{%
+  \setbox0=\vbox{\footcite{zankl2019}}%
+  \showbox0%
+}
+
+% --- Test 3: Article Folgezitat with postnote (pinpoint) ---
+% AZR Rule 75: Specific page in parentheses after starting page
+% Expected: Zankl, ecolex 2019, 244 (245)
+\TEST{Article: Folgezitat with postnote}{%
+  \setbox0=\vbox{\footcite[245]{zankl2019}}%
+  \showbox0%
+}
+
+% --- Test 4: Article Erstzitat with title ending in question mark (Rule 69) ---
+% No comma after title when it ends with ? or !
+% Expected: Oehlinger, Ist die Buchpreisbindung verfassungskonform? OeJZ 2008, 211
+\TEST{Article: Erstzitat title ending with question mark}{%
+  \setbox0=\vbox{\footcite{oehlinger2008}}%
+  \showbox0%
+}
+
+% --- Test 5: Article Erstzitat with issue number (Rule 74) ---
+% Number after slash instead of page
+% Expected: Zollner, Die neuen Herausforderungen an das Erbrecht, EF-Z 2/2008, 4
+\TEST{Article: Erstzitat with issue number}{%
+  \setbox0=\vbox{\footcite{zollner2008}}%
+  \showbox0%
+}
+
+\END
+\fi
+
+\end{document}

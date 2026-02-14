@@ -1,0 +1,85 @@
+% Test: incollection citations (AZR Rules 70-71, 76)
+% Tests Festschrift contributions and Sammelband (collection) contributions
+%
+% Erstzitat (Rule 71):  Author, Title, in Editor (Hrsg), BookTitle (Year) Page
+% Folgezitat (Rule 76): Author in Editor (Hrsg), BookTitle Page
+% Festschrift (Rule 70): no editor/(Hrsg)
+%
+% Entries used ONLY via \nocite in \OMIT are genuine Erstzitate in the TEST block.
+% Entries \footcite'd in \OMIT are Folgezitate in the TEST block.
+\input{regression-test}
+\documentclass{article}
+\usepackage[style=authortitle,backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\newif\ifbblexists
+\IfFileExists{\jobname.bbl}{\bblexiststrue}{\bblexistsfalse}
+
+\begin{document}
+
+% neumayr2011, deixler2001: \nocite for Erstzitat + Folgezitat sequence
+% bayern2018: \footcite for Folgezitat-only (postnote test)
+% schulev2011: \nocite for Erstzitat test
+\OMIT
+\nocite{neumayr2011}
+\nocite{deixler2001}
+\footcite{bayern2018}
+\nocite{schulev2011}
+\clearpage
+\TIMO
+
+\ifbblexists
+\START
+
+% --- Test 1: Festschrift Erstzitat (Rule 70) ---
+% Expected: Neumayr, Die Entwicklung des Kindschaftsrechts - Vom 20. Jahrhundert
+%           bis zur Gegenwart, in FS 200 Jahre ABGB (2011), 495
+% Note: no (Hrsg) for Festschriften per Rule 70
+\TEST{Incollection: Festschrift Erstzitat}{%
+  \setbox0=\vbox{\footcite{neumayr2011}}%
+  \showbox0%
+}
+
+% --- Test 2: Festschrift Folgezitat (Rule 76) ---
+% Title drops, year drops
+% Expected: Neumayr in FS 200 Jahre ABGB 495
+\TEST{Incollection: Festschrift Folgezitat}{%
+  \setbox0=\vbox{\footcite{neumayr2011}}%
+  \showbox0%
+}
+
+% --- Test 3: Sammelband Erstzitat (Rule 71) ---
+% Expected: Deixler-Huebner, Die neuen familienrechtlichen Verfahrensbestimmungen,
+%           in Ferrari/Hopf (Hrsg), Reform des Kindschaftsrechts (2001), 115
+\TEST{Incollection: Sammelband Erstzitat}{%
+  \setbox0=\vbox{\footcite{deixler2001}}%
+  \showbox0%
+}
+
+% --- Test 4: Sammelband Folgezitat (Rule 76) ---
+% Expected: Deixler-Huebner in Ferrari/Hopf (Hrsg), Reform des Kindschaftsrechts 115
+\TEST{Incollection: Sammelband Folgezitat}{%
+  \setbox0=\vbox{\footcite{deixler2001}}%
+  \showbox0%
+}
+
+% --- Test 5: Collection Folgezitat with specific page postnote ---
+% Expected: Bayern in Barfield/Pagallo (Hrsg), Research Handbook... 144 (150)
+\TEST{Incollection: Folgezitat with postnote}{%
+  \setbox0=\vbox{\footcite[150]{bayern2018}}%
+  \showbox0%
+}
+
+% --- Test 6: Another Festschrift Erstzitat (Rule 70) ---
+% Expected: Schulev-Steindl, Vom Wesen und Wert der Parteistellung,
+%           in FS Mayer (2011), 683
+% Note: no (Hrsg) for Festschriften per Rule 70
+\TEST{Incollection: another Festschrift Erstzitat}{%
+  \setbox0=\vbox{\footcite{schulev2011}}%
+  \showbox0%
+}
+
+\END
+\fi
+
+\end{document}
